@@ -1,0 +1,43 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+        background: #F7F7F7;
+        /*background-image: url("imagenes-portada/pokeball-background.png");
+        background-repeat: no-repeat;
+        background-position: center;*/
+}
+header {
+    background-image: url("imagenes-portada/fondo-cielo.png");
+    padding: 20px;
+}
+.logo-pokemon {
+    width: 20%;
+    display: inline-block;
+}
+ul {
+    display: inline-block;
+    position: absolute;
+    top: 45px;
+}
+li{
+    display: inline-block;
+}
+button{
+    padding: 15px;
+    margin-left: 10px;
+}
+.lugia {
+    width: 20%;
+    float: right;
+}
+.bienvenida {
+    text-align: center;
+}
+input {
+    width: 50%;
+}
+.pokeball {
+    margin-left: 500px;
+    margin-top: 50px;
+    position: fixed;
+}

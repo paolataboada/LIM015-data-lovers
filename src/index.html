@@ -2,10 +2,28 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Data Lovers</title>
+    <title>Pokémon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <header>
+      <img class="logo-pokemon" src="imagenes-portada/pokemon-logo.png" alt="Logo Pokémon">
+      <ul>
+        <li><button>Inicio</button></li>
+        <li><button>Cómo ser maestro pokémon</button></li>
+        <li><button>Horarios de Aparición</button></li>
+      </ul>
+      <!-- <img class="lugia" src="imagenes-portada/especial-lugia.png" alt="Pokemon Lugia">--><br>
+      <div><input type="text" id="Search" placeholder="🔍️ Buscar"></div>
+    </header>
+    <section id="container">
+      <p class="bienvenida">Te damos la bienvenida a la pokebola! Conoce todos los pokemones de la Región Kanto</p>
+      <img class="pokeball" src="imagenes-portada/pokeball-background.png" alt="Pokeball de fondo">
+    </section>
+
     <div id="root"></div>
     <script src="main.js" type="module"></script>
   </body>
