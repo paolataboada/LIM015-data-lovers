@@ -33,9 +33,13 @@ button{
 .bienvenida {
     text-align: center;
 }
-input {
-    width: 50%;
+
+#optionsList, #filterList{
+    width: 35%;
+    padding: 5px;
+
 }
+
 .pokeball {
     margin-left: 500px;
     margin-top: 50px;
