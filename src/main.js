@@ -15,9 +15,9 @@ function elegirPokemon(data){
     for(let i=0; i< data.pokemon.length; i++){
         document.getElementById("container-pokemon").innerHTML += `
         <div class="single-card">
-            <header class="num-card">${data.pokemon[i]['num']}</header>
+            <h3 class="num-card">Nº${data.pokemon[i]['num']}</h3>
             <img class="img-card" src="https://www.serebii.net/pokemongo/pokemon/${data.pokemon[i]['num']}.png"></img>
-            <footer class="name-card"> ${data.pokemon[i]['name']} </footer>
+            <div class="name-card"> ${data.pokemon[i]['name']} </div>
         </div> `
     }
 }
@@ -25,7 +25,7 @@ elegirPokemon(data);
 
 //muestra cards de los pokémon según el tipo seleccionado
 let selectTypePokemon = (tipo) => {
-    return filterData(data.pokemon, tipo).filter((pokemonType)=>{
+    return filterData(data.pokemon, tipo).map((pokemonType)=>{
       document.getElementById("container-pokemon").innerHTML += `
           <div class="single-card">
               <header class="num-card">Nro. ${pokemonType.num}</header>

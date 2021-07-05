@@ -10,53 +10,54 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <img class="logo-pokemon" src="imagenes-portada/pokemon-logo.png" alt="Logo Pokémon">
-      <ul>
-        <li><button>Inicio</button></li>
-        <li><button>Cómo ser maestro pokémon</button></li>
-        <li><button>Horarios de Aparición</button></li>
-      </ul>
-      <!--<img class="lugia" src="imagenes-portada/especial-lugia.png" alt="Pokemon Lugia">--> <br>
+    <section class="contenedor-principal">
+      <header class="encabezado-principal">
+        <img class="logo-pokemon" src="imagenes-portada/pokemon-logo.png" alt="Logo Pokémon">
+        <ul><li><a href="#">Inicio</a href="#"></li>
+            <li><a href="#">Cómo ser maestro pokémon</a></li>
+            <li><a href="#">Horarios de Aparición</a></li>
+        </ul>
+        <img class="lugia" src="imagenes-portada/especial-lugia.png" alt="Pokemon Lugia">
+      </header>
       
-      <!--Listas desplegables de ordenar y filtrar-->
-      <div>
-        <select id="optionsList">
-          <option value="order">Ordenar</option>
-          <option value="A-Z">Ordenar de A-Z</option>
-          <option value="Z-A">Ordena de Z-A</option>
-          <option value="orderNumerically">Ordenar numericamente</option>
-        </select>
-        <select id= "filterList">
-          <option value= "filter">Filtrar por tipo</option>
-          <option value= "bug">Bicho</option>
-          <option value= "dark">Siniestro</option>
-          <option value= "dragon">Dragón</option>
-          <option value= "grass">Planta</option>
-          <option value= "poison">Venenoso</option>
-          <option value= "normal">Normal</option>
-          <option value= "fire">Fuego</option>
-          <option value= "flying">Volador</option>
-          <option value= "water">Agua</option>
-          <option value= "ground">Tierra</option>
-          <option value= "fighting">Lucha</option>
-          <option value= "rock">Roca</option>
-          <option value= "ice">Hielo</option>
-          <option value= "electric">Eléctrico</option>
-          <option value= "fairy">Hada</option>
-          <option value= "ghost">Fantasma</option>
-        </select>
-      </div>
-    </header>
-    <section id="portada">
-      <p class="bienvenida">Te damos la bienvenida a la pokebola! Conoce todos los pokemones de la Región Kanto</p>
-      <img class="pokeball" src="imagenes-portada/pokeball-background.png" alt="Pokeball de fondo">
+      <section class="contenedor-de-informacion">
+        <h4 class="frase-bienvenida">Te damos la bienvenida a la pokebola! Conoce todos los pokemones de la Región Kanto</h4> 
+        <img class="pokeball-background" src="imagenes-portada/pokeball-background.png" alt="Pokeball de fondo">
+        <!--Listas desplegables de ordenar y filtrar-->
+        <div class="listas-despeglables">
+          <select id="optionsList">
+            <option disabled selected>Ordenar</option>
+            <option value="A-Z">Ordenar de A-Z</option>
+            <option value="Z-A">Ordena de Z-A</option>
+            <option value="orderNumerically">Ordenar numericamente</option>
+          </select>
+          <select id= "filterList">
+            <option disabled selected>Filtrar por tipo</option>
+            <option value= "bug">Bicho</option>
+            <option value= "dark">Siniestro</option>
+            <option value= "dragon">Dragón</option>
+            <option value= "grass">Planta</option>
+            <option value= "poison">Venenoso</option>
+            <option value= "normal">Normal</option>
+            <option value= "fire">Fuego</option>
+            <option value= "flying">Volador</option>
+            <option value= "water">Agua</option>
+            <option value= "ground">Tierra</option>
+            <option value= "fighting">Lucha</option>
+            <option value= "rock">Roca</option>
+            <option value= "ice">Hielo</option>
+            <option value= "electric">Eléctrico</option>
+            <option value= "fairy">Hada</option>
+            <option value= "ghost">Fantasma</option>
+            <option value= "psychic">Psíquico</option>
+            <option value= "steel">Acero</option>
+          </select>
+        </div>
+        <!--Cards interactivos de los 251 pokémon-->
+        <section class="has-elegido" id="printChoice"></section>
+        <section class="cards-pokemon" id="container-pokemon"></section>
+      </section>
     </section>
-    <section>
-      <div id="printChoice"></div>
-      <div id="container-pokemon"></div>
-    </section>
-
     <div id="root"></div>
     <script src="main.js" type="module"></script>
   </body>
