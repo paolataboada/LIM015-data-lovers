@@ -1,0 +1,9 @@
+{
+  "alignObjectProperties": true,
+  "arrayExpand": true,
+  "arrowParens": "always",
+  "bracketSameLine": true,
+  "singleQuote": true,
+  "printWidth": 100,
+  "tabWidth": 2
+}

@@ -1,151 +1,189 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 body {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 /* Contenedor global */
-.contenedor-principal{
-    background-color: #dfdfdf;
-    margin: 15px;
-    border-radius: 20px;
+.contenedor-principal {
+  background-color: #f7f7f7;
+  margin: 15px;
+  border-radius: 50px 50px 15px 15px;
 }
 /* Header/Encabezado principal */
 .encabezado-principal {
-    background-image: url("imagenes-portada/fondo-cielo.png");
-    margin: 5px;
-    padding: 20px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: space-between;
-    flex-flow: row wrap;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  background-image: url("imagenes-portada/fondo-cielo.png");
+  padding: 20px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .logo-pokemon {
-    width: 23%;
-    margin: 5px 10px;
+  width: 23%;
+  margin: 5px;
 }
 .logo-pokemon:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 .lugia {
-    width: 20%;
-    position: absolute;
-    top:-30px;
-    right: -10px;
+  width: 20%;
+  position: absolute;
+  top: -30px;
+  right: -10px;
 }
 .lugia:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 /* Botones del header */
 ul {
-    list-style: none;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    margin-right: 250px;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  margin-right: 250px;
 }
 li {
-    margin: 10px;
-    padding: 8px 15px;
-    border-radius: 5px;
-    background: white;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 a {
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bolder;
-    color: black;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bolder;
+  color: black;
 }
-li:hover{
-    opacity: 0.6;
-    background: rgb(48, 51, 51);
-    border: 1px solid white;
+li:hover {
+  opacity: 0.6;
+  background: rgb(48, 51, 51);
+  border: 1px solid white;
 }
-a:hover{
-    background: rgb(48, 51, 51);
-    color: white;
+a:hover {
+  background: rgb(48, 51, 51);
+  color: white;
 }
 /* Subcontenedor */
 .contenedor-de-informacion {
-    padding: 20px 30px;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
+  padding: 20px 30px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 .frase-bienvenida {
-    text-align: center;
-    padding: 10px;
+  text-align: center;
+  padding: 10px;
 }
 .pokeball-background {
-    position: fixed;
-    margin-top: 150px;
-    text-align: center;
+  position: fixed;
+  margin-top: 150px;
+  text-align: center;
+  width: 240px;
 }
 /* Subcontenedor: Listas desplegables */
 .listas-desplegables {
-    display: flex;
-    flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
 }
 select {
-    width: 250px;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bolder;
+  width: 250px;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
 }
-/* Subcontenedor: Secciòn de cards interactivos */
+/* Subcontenedor: Sección de cards interactivos */
 .has-elegido {
-    align-self: flex-start;
-    padding-left: 40px;
-    margin: 10px 0;
-    font-weight: bolder;
-    font-size: 18px;
+  align-self: flex-start;
+  padding-left: 40px;
+  margin: 10px 0;
+  font-weight: bolder;
+  font-size: 18px;
 }
 .cards-pokemon {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    z-index: 1;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  z-index: 1;
 }
 /* Subcontenedor: Divs creados por JS */
-.single-card{
-    width: 210px;
-    height: 250px;
-    margin: 20px 15px;
-    display: flex;
-    flex-direction: column;
-    background: white;
-    border: 2px solid #74CB48;
-    border-radius: 8px;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+.single-card {
+  width: 210px;
+  height: 250px;
+  margin: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 2px solid #74cb48;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
-.num-card{
-    font-size: 18px;
-    font-weight: bolder;
-    background:white;
-    color: rgb(11, 11, 107);
-    border-radius: 10px;
-    padding: 10px 0 0 15px;
+.num-card {
+  font-size: 18px;
+  font-weight: bolder;
+  background: white;
+  color: rgb(11, 11, 107);
+  border-radius: 10px;
+  padding: 10px 0 0 15px;
 }
-.img-card{
-    width: 70%;
-    margin: auto;
+.img-card {
+  width: 70%;
+  margin: auto;
 }
-.name-card{
-    width: 100%;
-    height: 50px;
-    color: white;
-    font-size: 18px;
-    font-weight: bolder;
-    text-transform: capitalize;
-    text-align: center;
-    line-height: 50px;
-    background: #74CB48;
-    border-radius: 0 0 5px 5px;
+.img-card:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+.name-card {
+  width: 100%;
+  height: 50px;
+  color: white;
+  font-size: 18px;
+  font-weight: bolder;
+  text-transform: capitalize;
+  text-align: center;
+  line-height: 50px;
+  background: #74cb48;
+  border-radius: 0 0 5px 5px;
+}
+/* Creando un modal con CSS (tutorial W3Schools) */
+/* Fondo del modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  padding-top: 250px;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0, 0.5);
+}
+/* Contenido del modal */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 50%;
+}
+/* Botón x (cerrar) */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 25px;
+  font-weight: bolder;
+  font-family: "Arial Narrow Bold", sans-serif;
+}
+.close:hover {
+  color: #000;
+  cursor: pointer;
 }
