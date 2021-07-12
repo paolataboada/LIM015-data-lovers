@@ -13,7 +13,7 @@
     <section class="contenedor-principal">
       <header class="encabezado-principal">
         <img class="logo-pokemon" src="imagenes-portada/pokemon-logo.png" alt="Logo Pokémon">
-        <ul><li><a href="#">Inicio</a href="#"></li>
+        <ul><li><a id="btn-prueba" href="#">Inicio</a href="#"></li>
             <li><a href="#">Cómo ser maestro pokémon</a></li>
             <li><a href="#">Horarios de Aparición</a></li>
         </ul>
@@ -53,18 +53,30 @@
             <option value= "steel">Acero</option>
           </select>
         </div>
-        <button id="boton-modal">Click para abrir el modal</button>
+
         <!--Cards interactivos de los 251 pokémon-->
         <section class="has-elegido" id="printChoice"></section>
         <section class="cards-pokemon" id="containerPokemon"></section>
 
         <!-- Espacio para el modal -->
-        <div id="myModal" class="modal">
-        <!-- Contenido del modal -->
-        <div class="modal-content">
-          <span class="close">x</span>
-          <p>Hola, este es mi futuro modal</p>
-        </div>
+        <section id="modal">
+          <div id="container-info-pokemon">
+            <div id="header-info-pokemon">
+              <h3 id="name-info-pokemon">N° </h3>
+              <h3 id="close">x</h3>
+            </div>
+            <div id="small-info-pokemon">
+              <div id="imagen-info-pokemon"></div>
+              <div id="first-info-pokemon">
+                <p id="height-info-pokemon">Height: </p>
+                <p id="weight-info-pokemon">Weight: </p>
+                <p id="egg-info-pokemon">Egg: </p>
+                <p id="encounter-info-pokemon">Encounter rate: </p>
+              </div>
+            </div>
+            <article id="about-info-pokemon">Description: </article>
+          </div>
+        </section>
 
       </section>
     </section>

@@ -14,7 +14,7 @@ document.getElementById("containerPokemon").innerHTML += "Aquí debe aparecer el
 function elegirPokemon(data){
     for(let i=0; i< data.pokemon.length; i++){
         document.getElementById("containerPokemon").innerHTML += `
-        <div class="single-card">
+        <div id=${data.pokemon[i]['num']} class="single-card">
             <h3 class="num-card">Nº ${data.pokemon[i]['num']}</h3>
             <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${data.pokemon[i]['num']}.png"></img>
             <div class="name-card"> ${data.pokemon[i]['name']} </div>
@@ -27,82 +27,88 @@ elegirPokemon(data);
 let selectTypePokemon = (tipo) => {
     return filterData(data.pokemon, tipo).map((pokemonType)=>{
         document.getElementById("containerPokemon").innerHTML += `
-        <div class="single-card">
+        <div id=${pokemonType['num']} class="single-card">
             <h3 class="num-card">Nº ${pokemonType.num}</h3>
             <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${pokemonType['num']}.png"></img>
             <div class="name-card"> ${pokemonType.name} </div>
         </div> `
     })
 }
-
-//evento seleccionar opciones de tipo (FILTRO)
-const showChoice = (event) => {
+//evento seleccionar opciones de tipo (FILTRO) - resumida 09/07
+document.getElementById('filterList').addEventListener('change', (e) => {
     document.getElementById('containerPokemon').innerHTML = ` `;
-    const printChoice = document.getElementById('printChoice');
-    printChoice.textContent = `Has elegido el tipo: ${event.target.value}`;
-    selectTypePokemon(event.target.value);
-}
-document.getElementById('filterList').addEventListener('change', showChoice);
+    selectTypePokemon(e.target.value);
+});
 
 //interacción del boton ordenar
 const container = document.getElementById("containerPokemon");
 
 document.getElementById("sortList").addEventListener("change", (e) => {
-  container.innerHTML = "";
+    container.innerHTML = "";
 
-  if (e.target.value === "A-Z" || e.target.value === "Z-A" ) {
-   const sortArray = sortData(data.pokemon, "name", e.target.value);
-    for (let i = 0; i < data.pokemon.length; i++) {
+    if (e.target.value === "A-Z" || e.target.value === "Z-A" ) {
+        const sortArray = sortData(data.pokemon, "name", e.target.value);
+        for (let i = 0; i < data.pokemon.length; i++) {
 
-      document.getElementById("containerPokemon").innerHTML += `
-        <div class="single-card">
-           <h3 class="num-card">Nº ${sortArray[i].num}</h3>
-           <img class="img-card" src="https://www.serebii.net/pokemongo/pokemon/${sortArray[i].num}.png"></img>
-           <div class="name-card"> ${sortArray[i].name} </div>
-       </div>
-       `
+        document.getElementById("containerPokemon").innerHTML += `
+            <div class="single-card">
+            <h3 class="num-card">Nº ${sortArray[i].num}</h3>
+            <img class="img-card" src="https://www.serebii.net/pokemongo/pokemon/${sortArray[i].num}.png"></img>
+            <div class="name-card"> ${sortArray[i].name} </div>
+        </div> `
+        }
     }
-  }
-  
-  if (e.target.value === "sortNumerically"){
-    const sortArrayNum = sortData(data.pokemon, "num", e.target.value);
-     for(let i=0; i<data.pokemon.length; i++) {
 
-         document.getElementById("containerPokemon").innerHTML += `
-         <div class="single-card">
-           <h3 class="num-card">Nº ${sortArrayNum[i].num}</h3>
-           <img class="img-card" src="https://www.serebii.net/pokemongo/pokemon/${sortArrayNum[i].num}.png"></img>
-           <div class="name-card"> ${sortArrayNum[i].name} </div>
-       </div>
-         `
-     }
-  }
+    if (e.target.value === "sortNumerically"){
+        const sortArrayNum = sortData(data.pokemon, "num", e.target.value);
+        for(let i=0; i<data.pokemon.length; i++) {
+
+            document.getElementById("containerPokemon").innerHTML += `
+            <div class="single-card">
+            <h3 class="num-card">Nº ${sortArrayNum[i].num}</h3>
+            <img class="img-card" src="https://www.serebii.net/pokemongo/pokemon/${sortArrayNum[i].num}.png"></img>
+            <div class="name-card"> ${sortArrayNum[i].name} </div>
+        </div>
+            `
+        }
+    }
 });
 
-
-
-
 // Probando el modal
-const modal = document.getElementById("myModal");
-const btn = document.getElementById("boton-modal");
-const span = document.getElementsByClassName("close")[0];
-// Función para abrir el modal (click btn)
-btn.addEventListener('click', ()=>{modal.style.display='block'});
-span.addEventListener('click', ()=>{modal.style.display='none'});
+function openModal(idCard){
+    document.getElementById('name-info-pokemon').innerHTML = `N° ${data.pokemon[Number(idCard)-1].num} ${data.pokemon[Number(idCard)-1].name}`;
+    document.getElementById('imagen-info-pokemon').innerHTML = `<img class="imagen-info-pokemon" src="https://www.serebii.net/pokemongo/pokemon/${data.pokemon[Number(idCard)-1].num}.png"></img>`;
+    document.getElementById('height-info-pokemon').innerHTML = `Height: ${data.pokemon[Number(idCard)-1].size['height']}`;
+    document.getElementById('weight-info-pokemon').innerHTML = `Weight: ${data.pokemon[Number(idCard)-1].size['weight']}`;
+    document.getElementById('egg-info-pokemon').innerHTML = `Egg: ${data.pokemon[Number(idCard)-1].egg}`;
+    document.getElementById('encounter-info-pokemon').innerHTML = `Encounter rate: ${data.pokemon[Number(idCard)-1].encounter['base-capture-rate']}`;
+    document.getElementById('about-info-pokemon').innerHTML = `Description: ${data.pokemon[Number(idCard)-1].about}`;
+  document.getElementById(idCard).addEventListener('click', ()=>{
+    document.getElementById('modal').style.display = 'block';
+  })
+  document.getElementById('close').addEventListener('click', ()=>{
+    document.getElementById('modal').style.display = 'none';
+  })
+}
 
-/* return imagenCard.map((pokemonClickeado)=>{
-    document.getElementById("modal-content").innerHTML += `
-        <div class="file-card-pokemon">
-            <div class="divisores-file-pokemon">
-                <h3 class="name-card-pokemon"> ${pokemonClickeado}['name']}</h3>
-                <p class="height-card-pokemon">Altura:${pokemonClickeado}['size']['height']}</p>
-                <p class="height-card-pokemon">Peso: ${pokemonClickeado}['size']['weight']}</p>
-                <p class="egg-card-pokemon">Huevo: ${pokemonClickeado}['egg']}</p>
-                <p class="encounter-card-pokemon">Probabilidad de encuentro: ${pokemonClickeado}['encounter']['base-capture-rate']}</p>
-            </div>
-            <div class="divisores-file-pokemon">
-                <img class="imagen-card-pokemon" src="https://www.serebii.net/pokemongo/pokemon/${pokemonClickeado}['num']}.png"></img>
-            </div>
-        </div> `
-}) */
+function openInfo(){
+  document.getElementById("containerPokemon").addEventListener('click', (e)=>{
+    const replay = (index) =>{ 
+      data.pokemon.find(buscando =>{ 
+        buscando.img == index ? openModal(buscando.num) : null
+      }) 
+    };
+    replay(e.target.getAttribute('src'));
+  })
+}
+openInfo();
 
+/* const pesoPesado = (obj) => {
+    let sizePokemon = [];
+    obj.map((array)=> {
+        sizePokemon = array['size']['weight'];
+        return console.log(sizePokemon);
+    })
+
+};
+pesoPesado(data.pokemon) */
