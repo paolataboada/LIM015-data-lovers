@@ -214,6 +214,16 @@ select {
   align-self: center;
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7));
 }
+.tooltip {
+  display: none;
+  position: absolute;
+  background-color: black;
+  color: #f7f7f7;
+  border-radius: 5px;
+  font-size: 12px;
+  text-align: center;
+  padding: 5px 8px;
+}
 #first-info-pokemon {
   display: flex;
   flex-flow: column;

@@ -16,6 +16,7 @@ function elegirPokemon(data){
         document.getElementById("containerPokemon").innerHTML += `
         <div id=${data.pokemon[i]['num']} class="single-card">
             <h3 class="num-card">Nº ${data.pokemon[i]['num']}</h3>
+            <span class="tooltip">Información sobre el pokémon</span>
             <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${data.pokemon[i]['num']}.png"></img>
             <div class="name-card"> ${data.pokemon[i]['name']} </div>
         </div> `
@@ -51,7 +52,7 @@ document.getElementById("sortList").addEventListener("change", (e) => {
         for (let i = 0; i < data.pokemon.length; i++) {
 
         document.getElementById("containerPokemon").innerHTML += `
-            <div class="single-card">
+            <div id="${sortArray[i].num}" class="single-card">
             <h3 class="num-card">Nº ${sortArray[i].num}</h3>
             <img class="img-card" src="https://www.serebii.net/pokemongo/pokemon/${sortArray[i].num}.png"></img>
             <div class="name-card"> ${sortArray[i].name} </div>
@@ -64,7 +65,7 @@ document.getElementById("sortList").addEventListener("change", (e) => {
         for(let i=0; i<data.pokemon.length; i++) {
 
             document.getElementById("containerPokemon").innerHTML += `
-            <div class="single-card">
+            <div id="${sortArrayNum[i].num}" class="single-card">
             <h3 class="num-card">Nº ${sortArrayNum[i].num}</h3>
             <img class="img-card" src="https://www.serebii.net/pokemongo/pokemon/${sortArrayNum[i].num}.png"></img>
             <div class="name-card"> ${sortArrayNum[i].name} </div>
