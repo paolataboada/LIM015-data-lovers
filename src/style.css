@@ -124,6 +124,7 @@ select {
   border: 2px solid #74cb48;
   border-radius: 8px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 .num-card {
   font-size: 18px;
@@ -132,6 +133,37 @@ select {
   color: rgb(11, 11, 107);
   border-radius: 10px;
   padding: 10px 0 0 15px;
+}
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  background-color: black;
+  color: #f7f7f7;
+  border-radius: 5px;
+  font-size: 11px;
+  text-align: center;
+  padding: 5px 8px;
+  z-index: 10;
+  align-self: center;
+  top: 5%;
+  right: 10%;
+  left: 40%;
+  opacity: 0;
+}
+.single-card:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transition: 1s;
+}
+.tooltip::after {
+  content: "";
+  display: block;
+  background: black;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  position: absolute;
+  left: 20%;
 }
 .img-card {
   width: 70%;
@@ -178,6 +210,15 @@ select {
   width: 35%;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
+@media (max-width: 750px) {
+  #modal {
+    position: fixed;
+    padding-top: 450px;
+  }
+  #container-info-pokemon {
+    width: 70%;
+  }
+}
 #header-info-pokemon {
   display: flex;
   align-content: row nowrap;
@@ -213,16 +254,6 @@ select {
   width: 70%;
   align-self: center;
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7));
-}
-.tooltip {
-  display: none;
-  position: absolute;
-  background-color: black;
-  color: #f7f7f7;
-  border-radius: 5px;
-  font-size: 12px;
-  text-align: center;
-  padding: 5px 8px;
 }
 #first-info-pokemon {
   display: flex;
