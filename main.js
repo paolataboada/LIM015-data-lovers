@@ -16,7 +16,7 @@ function elegirPokemon(data){
         document.getElementById("containerPokemon").innerHTML += `
         <div id=${data.pokemon[i]['num']} class="single-card">
             <h3 class="num-card">Nº ${data.pokemon[i]['num']}</h3>
-            <span class="tooltip">Información sobre el pokémon</span>
+            <span class="tooltip">Click to see information</span>
             <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${data.pokemon[i]['num']}.png"></img>
             <div class="name-card"> ${data.pokemon[i]['name']} </div>
         </div> `
@@ -30,6 +30,7 @@ let selectTypePokemon = (tipo) => {
         document.getElementById("containerPokemon").innerHTML += `
         <div id=${pokemonType['num']} class="single-card">
             <h3 class="num-card">Nº ${pokemonType.num}</h3>
+            <span class="tooltip">Click to see information</span>
             <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${pokemonType['num']}.png"></img>
             <div class="name-card"> ${pokemonType.name} </div>
         </div> `
@@ -54,6 +55,7 @@ document.getElementById("sortList").addEventListener("change", (e) => {
         document.getElementById("containerPokemon").innerHTML += `
             <div id="${sortArray[i].num}" class="single-card">
             <h3 class="num-card">Nº ${sortArray[i].num}</h3>
+            <span class="tooltip">Click to see information</span>
             <img class="img-card" src="https://www.serebii.net/pokemongo/pokemon/${sortArray[i].num}.png"></img>
             <div class="name-card"> ${sortArray[i].name} </div>
         </div> `
@@ -67,6 +69,7 @@ document.getElementById("sortList").addEventListener("change", (e) => {
             document.getElementById("containerPokemon").innerHTML += `
             <div id="${sortArrayNum[i].num}" class="single-card">
             <h3 class="num-card">Nº ${sortArrayNum[i].num}</h3>
+            <span class="tooltip">Click to see information</span>
             <img class="img-card" src="https://www.serebii.net/pokemongo/pokemon/${sortArrayNum[i].num}.png"></img>
             <div class="name-card"> ${sortArrayNum[i].name} </div>
         </div>
