@@ -80,30 +80,30 @@ document.getElementById("sortList").addEventListener("change", (e) => {
 
 // Probando el modal
 function openModal(idCard){
-    document.getElementById('name-info-pokemon').innerHTML = `N° ${data.pokemon[Number(idCard)-1].num} ${data.pokemon[Number(idCard)-1].name}`;
-    document.getElementById('imagen-info-pokemon').innerHTML = `<img class="imagen-info-pokemon" src="https://www.serebii.net/pokemongo/pokemon/${data.pokemon[Number(idCard)-1].num}.png"></img>`;
-    document.getElementById('height-info-pokemon').innerHTML = `Height: ${data.pokemon[Number(idCard)-1].size['height']}`;
-    document.getElementById('weight-info-pokemon').innerHTML = `Weight: ${data.pokemon[Number(idCard)-1].size['weight']}`;
-    document.getElementById('egg-info-pokemon').innerHTML = `Egg: ${data.pokemon[Number(idCard)-1].egg}`;
-    document.getElementById('encounter-info-pokemon').innerHTML = `Encounter rate: ${data.pokemon[Number(idCard)-1].encounter['base-capture-rate']}`;
-    document.getElementById('about-info-pokemon').innerHTML = `Description: ${data.pokemon[Number(idCard)-1].about}`;
-  document.getElementById(idCard).addEventListener('click', ()=>{
-    document.getElementById('modal').style.display = 'block';
-  })
-  document.getElementById('close').addEventListener('click', ()=>{
-    document.getElementById('modal').style.display = 'none';
-  })
+        document.getElementById('name-info-pokemon').innerHTML = `N° ${data.pokemon[Number(idCard)-1].num} ${data.pokemon[Number(idCard)-1].name}`;
+        document.getElementById('imagen-info-pokemon').innerHTML = `<img class="imagen-info-pokemon" src="https://www.serebii.net/pokemongo/pokemon/${data.pokemon[Number(idCard)-1].num}.png"></img>`;
+        document.getElementById('height-info-pokemon').innerHTML = `Height: ${data.pokemon[Number(idCard)-1].size['height']}`;
+        document.getElementById('weight-info-pokemon').innerHTML = `Weight: ${data.pokemon[Number(idCard)-1].size['weight']}`;
+        document.getElementById('egg-info-pokemon').innerHTML = `Egg: ${data.pokemon[Number(idCard)-1].egg}`;
+        document.getElementById('encounter-info-pokemon').innerHTML = `Encounter rate: ${data.pokemon[Number(idCard)-1].encounter['base-capture-rate']}`;
+        document.getElementById('about-info-pokemon').innerHTML = `Description: ${data.pokemon[Number(idCard)-1].about}`;
+    document.getElementById(idCard).addEventListener('click', ()=>{
+        document.getElementById('modal').style.display = 'block';
+    })
+    document.getElementById('close').addEventListener('click', ()=>{
+        document.getElementById('modal').style.display = 'none';
+    })
 }
 
-function openInfo(){
-  document.getElementById("containerPokemon").addEventListener('click', (e)=>{
-    const replay = (index) =>{ 
-      data.pokemon.find(buscando =>{ 
-        buscando.img == index ? openModal(buscando.num) : null
-      }) 
-    };
-    replay(e.target.getAttribute('src'));
-  })
+const openInfo = () => {
+    document.getElementById("containerPokemon").addEventListener('click', (e)=>{
+        const replay = (index) =>{
+        data.pokemon.find(buscando =>{
+            buscando.img == index ? openModal(buscando.num) : null
+        })
+        };
+        replay(e.target.getAttribute('src'));
+    })
 }
 openInfo();
 
