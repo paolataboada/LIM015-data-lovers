@@ -1,4 +1,4 @@
-import { filterData, sortData } from './data.js';
+import { search, btnSearch, filterData, sortData } from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 
@@ -23,6 +23,26 @@ function elegirPokemon(data){
     }
 }
 elegirPokemon(data);
+
+//Funcionalidad para buscar pokemones por nombre
+btnSearch.onclick = function(){
+    document.getElementById("containerPokemon").innerHTML ="";
+    let textoMin = search.value.toLowerCase();
+    for (let i=0; i<data.pokemon.length; i++){
+      let dataMin= data.pokemon[i].name.toLowerCase();
+      if(dataMin.indexOf(textoMin) !== -1){
+        document.getElementById("containerPokemon").innerHTML += `
+        <div id=${data.pokemon[i]['num']} class="single-card">
+            <h3 class="num-card">Nº ${data.pokemon[i]['num']}</h3>
+            <span class="tooltip">Click to see information</span>
+            <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${data.pokemon[i]['num']}.png"></img>
+            <div class="name-card"> ${data.pokemon[i]['name']} </div>
+        </div> `
+      }
+    }
+  }
+
+
 
 //muestra cards de los pokémon según el tipo seleccionado
 let selectTypePokemon = (tipo) => {
