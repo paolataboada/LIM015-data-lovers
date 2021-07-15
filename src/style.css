@@ -14,69 +14,67 @@ body {
 }
 /* Header/Encabezado principal */
 .logo-fondo {
- /*  background-image: url("imagenes-portada/Imagen1.png"); */
+  /*  background-image: url("imagenes-portada/Imagen1.png"); */
   width: 100%;
   display: flex;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .barraMenu {
   width: 100%;
-  background-color: #4A7EAA;
+  background-color: #4a7eaa;
 }
-#btn-menu{
-  display:none;
+#btn-menu {
+  display: none;
 }
-.barraMenu label{
-  display:none;
+.barraMenu label {
+  display: none;
   width: 40px;
   height: 40px;
   padding: 10px;
 }
-.barraMenu label:hover{
+.barraMenu label:hover {
   cursor: pointer;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
 }
 .menu ul {
-  margin:0%;
-  list-style:none;
-  padding:0;
-  display:flex;
+  margin: 0%;
+  list-style: none;
+  padding: 0;
+  display: flex;
   justify-content: flex-end;
 }
 .menu li {
   text-align: center;
   flex-grow: 1;
 }
-.menu li:hover{
-  background: rgba(0,0,0,0.3)
+.menu li:hover {
+  background: rgba(0, 0, 0, 0.3);
 }
-.menu li a{
+.menu li a {
   display: block;
-  padding:15px 20px;
+  padding: 15px 20px;
   color: #ffff;
   text-decoration: none;
 }
-@media (max-width: 768px){
-  .barraMenu label{
+@media (max-width: 768px) {
+  .barraMenu label {
     display: block;
   }
-  .menu{
-    position:absolute;
-    background-color: #4A7EAA;
+  .menu {
+    position: absolute;
+    background-color: #4a7eaa;
     width: 70%;
     margin-left: -80%;
   }
-  .menu ul{
+  .menu ul {
     flex-direction: column;
-
   }
-  .menu li{
-    border-top:1px solid #ffff;
+  .menu li {
+    border-top: 1px solid #ffff;
   }
-  #btn-menu:checked ~.menu{
-    margin:0%;
+  #btn-menu:checked ~ .menu {
+    margin: 0%;
   }
-
 }
 
 a {
@@ -106,26 +104,26 @@ a:hover {
   padding: 10px;
 }
 /* Boton Buscar */
-.spaceSearch{
+.spaceSearch {
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
 }
-.search{  
+.search {
   width: 160px;
-  border-radius: 5px; 
+  border-radius: 5px;
   padding: 1px;
   margin: auto;
   font-family: "Poppins", sans-serif;
   font-weight: bolder;
 }
-.buttonSearch{
-  font-family: 'Poppins';
+.buttonSearch {
+  font-family: "Poppins";
   font-size: 15px;
   color: #f4faf8;
   width: 100px;
   border-radius: 5px;
-  margin:auto;
+  margin: auto;
   font-weight: bolder;
   background-color: #e79416;
 }
@@ -136,20 +134,29 @@ a:hover {
 }
 select {
   width: 250px;
-  border-radius: 5px;
+  border-radius: 7px;
   margin: 10px;
   padding: 10px;
   font-family: "Poppins", sans-serif;
   font-weight: bolder;
+  cursor: pointer;
+}
+.reset-search {
+  width: 160px;
+  padding: 11px;
+  margin: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  cursor: pointer;
+  border-radius: 7px;
+  border: 1px solid rgb(121, 121, 121);
+}
+.reset-search:hover {
+  background: #e79416;
+  border: 1px solid rgb(48, 51, 51);
+  color: white;
 }
 /* Subcontenedor: Sección de cards interactivos */
-.has-elegido {
-  align-self: flex-start;
-  padding-left: 40px;
-  margin: 10px 0;
-  font-weight: bolder;
-  font-size: 18px;
-}
 .cards-pokemon {
   display: flex;
   flex-flow: row wrap;
@@ -186,7 +193,7 @@ select {
   font-size: 11px;
   text-align: center;
   padding: 5px 8px;
-  z-index: 10;
+  z-index: 2;
   align-self: center;
   top: 5%;
   right: 10%;
@@ -232,7 +239,7 @@ select {
 #modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   padding-top: 100px;
   left: 0;
   top: 0;
