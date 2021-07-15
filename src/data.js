@@ -1,14 +1,15 @@
-// estas funciones son de ejemplo
+//funcion indexof para buscar pokemones
+export const search = document.getElementById("search");
+export const btnSearch = document.getElementById("btnSearch");
 
+
+
+//funcion filter para filtrar por tipo 
 export const filterData = (data, condition) => {
   return data.filter((pokemon)=>
     (pokemon.type.indexOf(condition) !== -1));
   //return 'example';
 };
-
-/* export const anotherExample = () => {
-  return 'OMG';
-}; */
 
 //funcion sort -ordenar alfabéticamente y numericamente descendente
 export const sortData = function(data, sortBy, sortOrder){
