@@ -325,3 +325,10 @@ select {
   margin: auto;
   text-align: justify;
 }
+/* Pestaña "How to be a pokemon master" */
+#newContainer {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  line-height: 40px;
+}

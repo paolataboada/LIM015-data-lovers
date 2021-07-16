@@ -1,4 +1,4 @@
-import { search, btnSearch, filterData, sortData } from './data.js';
+import { search, btnSearch, filterData, sortData, compute } from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 
@@ -39,11 +39,26 @@ btnSearch.onclick = function(){
             <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${data.pokemon[i]['num']}.png"></img>
             <div class="name-card"> ${data.pokemon[i]['name']} </div>
         </div> `
+        prueba();
       }
     }
   }
 
-
+//botón para cargar el top 10 pokémon más pesados
+const callCompute = () => {
+    document.getElementById('containerPokemon').innerHTML = ` `;
+    return compute(data.pokemon).map((elemento)=>{
+        document.getElementById('containerPokemon').innerHTML += `
+            <div id=${elemento['num']} class="single-card">
+                <h3 class="num-card">Nº ${elemento['num']}</h3>
+                <span class="tooltip">Click to see information</span>
+                <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${elemento['num']}.png"></img>
+                <div class="name-card"> ${elemento['name']} </div>
+            </div> `
+    prueba();
+    });
+}
+document.getElementById('probandoTop10').addEventListener('click', callCompute)
 
 //muestra cards de los pokémon según el tipo seleccionado
 let selectTypePokemon = (tipo) => {
@@ -128,16 +143,22 @@ const prueba = () => {
 }
 prueba();
 
-
 //boton de limpiar búsqueda y filtros
 document.querySelector('.reset-search').addEventListener('click', ()=> {
     document.getElementById('containerPokemon').innerHTML = ` `;
     document.getElementById('filterList').selectedIndex = 0;
     document.getElementById('sortList').selectedIndex = 0;
     elegirPokemon(data.pokemon);
+    callCompute();
     prueba();
 });
 
+//mostrando sección de How to be a pokemon master
+document.getElementById('howTo').addEventListener('click', ()=>{
+    document.getElementById('containerInformacion').innerHTML = ` `;
+    document.getElementById('containerPokemon').innerHTML = ` `;
+    document.getElementById('newContainer').style.display = 'block';
+})
 
 //console.log(document.querySelectorAll(".single-card"))
 

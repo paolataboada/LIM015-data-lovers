@@ -24,21 +24,22 @@
           <ul>
             <li><a href="index.html">Home</a href="#"></li>
             <li><a href="#">Stadistics</a></li>
-            <li><a href="#">How to be a pokemon master?</a></li>
-            <li><a href="#">Official Page</a></li>
+            <li><a id='howTo' href="#">How to be a pokemon master?</a></li>
+            <li><a href='https://pokemongolive.com/es/' target='_blank'>Official Page</a></li>
+            <li><a id='probandoTop10' href="#">Top 10 más altos</a></li>
           </ul>
         </nav>   
       </section>
   
         <!----------Sub Menus -------->
-        <section class="contenedor-de-informacion">
+        <section class="contenedor-de-informacion" id='containerInformacion'>
   
         <!----------Mensaje de Bienvenida-Inicio o Home-------->
           <h4 class="frase-bienvenida">Welcome to the pokeball! Meet all pokemon of the Kanto and Johto Regions</h4> 
   
         <!--------------- Boton Buscar --------------->
          <div class="spaceSearch">
-          <input type ="text" id="search" placeholder="Search pokemon" class="search"></input>
+          <input type ="text" id="search" placeholder="Search pokemon" class="search" autocomplete="off"></input>
           <button id="btnSearch" class="buttonSearch"> Search </button>
           
         </div>
@@ -77,6 +78,13 @@
 
         <!--Cards interactivos de los 251 pokémon-->
         <section class="cards-pokemon" id="containerPokemon"></section>
+        
+        <!--Pestaña 'How to be a pokemon master'-->
+        <section class="cards-pokemon" id="newContainer" style="display: none;">
+          <h3>Click on the video below to learn more about pokemon Go.</h3>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/Jgh3ZgX6-vQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p>Take heart, you will soon become the best pokemon master!</p>
+        </section>
 
         <!-- Espacio para el modal -->
         <section id="modal">
