@@ -1,4 +1,4 @@
-import { search, btnSearch, filterData, sortData, compute } from './data.js';
+import { search, btnSearch, filterData, sortData, compute, typeColors } from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 
@@ -58,6 +58,17 @@ let selectTypePokemon = (tipo) => {
             </div> `
     })
 }
+
+/* //función para mostrar los tipos por colores
+const colorPokemonTypes = (types) => {
+    querySelector('.num-card').forEach(type => {
+        const typeTextElement = document.createElement("span");
+        typeTextElement.style.color = typeColors[type.type.name];
+        typeTextElement.textContent = type.type.name;
+    });
+}
+colorPokemonTypes('fairy') */
+
 //evento seleccionar opciones de tipo (FILTRO) - resumida 09/07
 document.getElementById('filterList').addEventListener('change', (e) => {
     document.getElementById('containerPokemon').innerHTML = ` `;
