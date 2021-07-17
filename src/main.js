@@ -26,7 +26,9 @@ function elegirPokemon(){
 elegirPokemon();
 
 //Funcionalidad para buscar pokemones por nombre
-btnSearch.onclick = function(){
+search.onkeyup= buscar;
+btnSearch.onclick = buscar;
+function buscar(){
     document.getElementById("containerPokemon").innerHTML ="";
     let textoMin = search.value.toLowerCase();
     for (let i=0; i<data.pokemon.length; i++){
@@ -44,7 +46,7 @@ btnSearch.onclick = function(){
     }
   }
 
-//botón para cargar el top 10 pokémon más pesados
+//botón para cargar el top 10 pokémon más altos
 const callCompute = () => {
     document.getElementById('containerPokemon').innerHTML = ` `;
     return compute(data.pokemon).map((elemento)=>{
@@ -58,7 +60,7 @@ const callCompute = () => {
     prueba();
     });
 }
-document.getElementById('probandoTop10').addEventListener('click', callCompute)
+document.getElementById('probandoTop10').addEventListener('click', callCompute);
 
 //muestra cards de los pokémon según el tipo seleccionado
 let selectTypePokemon = (tipo) => {

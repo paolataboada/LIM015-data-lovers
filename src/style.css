@@ -104,33 +104,47 @@ a:hover {
   padding: 10px;
 }
 /* Boton Buscar */
+.search {
+  background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 210px 3px;
+  outline: none;
+  width: 250px;
+  margin-top: 10px;
+  margin-bottom:10px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  border: 1px solid rgb(121, 121, 121);
+  border-radius: 7px;
+}
+.buttonSearch {
+  font-family: "Poppins";
+  font-size: 15px; 
+  color: #f4faf8;
+  width: 160px;
+  margin-top: 10px;
+  margin-bottom:40px;
+  padding:10px;
+  font-weight: bolder;
+  background-color: #e79416;
+  border: 1px solid rgb(121, 121, 121);
+  border-radius: 7px;
+  cursor: pointer;
+}
+@media (max-width: 548px){
 .spaceSearch {
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
+  align-items:center;
+  justify-content: center;
 }
-.search {
-  width: 160px;
-  border-radius: 5px;
-  padding: 1px;
-  margin: auto;
-  font-family: "Poppins", sans-serif;
-  font-weight: bolder;
-}
-.buttonSearch {
-  font-family: "Poppins";
-  font-size: 15px;
-  color: #f4faf8;
-  width: 100px;
-  border-radius: 5px;
-  margin: auto;
-  font-weight: bolder;
-  background-color: #e79416;
 }
 /* Subcontenedor: Listas desplegables */
-.listas-desplegables {
+.listas-desplegables-y-limpiar {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  align-items:center;
 }
 select {
   width: 250px;
@@ -143,9 +157,10 @@ select {
 }
 .reset-search {
   width: 160px;
-  padding: 11px;
+  padding: 10px;
   margin: 10px;
   font-family: "Poppins", sans-serif;
+  font-size: 15px; 
   font-weight: bolder;
   cursor: pointer;
   border-radius: 7px;
