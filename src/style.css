@@ -9,15 +9,15 @@ body {
 /* Contenedor global */
 .contenedor-principal {
   background-color: #f7f7f7;
-  margin: 15px;
-  border-radius: 50px 50px 15px 15px;
+  margin: 10px;
+  border-radius: 30px;
 }
 /* Header/Encabezado principal */
 .logo-fondo {
   /*  background-image: url("imagenes-portada/Imagen1.png"); */
   width: 100%;
   display: flex;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
 }
 .barraMenu {
   width: 100%;
@@ -83,7 +83,7 @@ a {
   font-weight: bolder;
   color: black;
 }
-li:hover {
+.li:hover {
   opacity: 0.6;
   background: rgb(48, 51, 51);
   border: 1px solid white;
@@ -98,6 +98,7 @@ a:hover {
   display: flex;
   flex-flow: column;
   align-items: center;
+  text-align: center;
 }
 .frase-bienvenida {
   text-align: center;
@@ -106,14 +107,15 @@ a:hover {
 /* Boton Buscar */
 .spaceSearch {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  /* justify-content: space-between; */
   flex-flow: row wrap;
 }
 .search {
   width: 160px;
   border-radius: 5px;
   padding: 1px;
-  margin: auto;
+  margin: 15px 10px;
   font-family: "Poppins", sans-serif;
   font-weight: bolder;
 }
@@ -123,7 +125,7 @@ a:hover {
   color: #f4faf8;
   width: 100px;
   border-radius: 5px;
-  margin: auto;
+  margin: 15px 10px;
   font-weight: bolder;
   background-color: #e79416;
 }
@@ -235,12 +237,67 @@ select {
   background: #74cb48;
   border-radius: 0 0 5px 5px;
 }
+/* Section: "How to be a pokemon master" */
+.new-container {
+  padding: 25px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+.section-video {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+.video-youtube {
+  width: 560px;
+  height: 315px;
+  margin: 15px 0;
+}
+.sidebar {
+  display: flex;
+  flex-flow: column;
+  width: 30%;
+  padding: 15px 5px;
+  background: #c3c7f5;
+  border-radius: 5px;
+}
+h5 {
+  align-self: center;
+  margin: 15px;
+}
+.ul-2 {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.li-2 {
+  list-style: none;
+  margin: 5px 35px;
+  display: flex;
+}
+.logo-social-network {
+  width: 25px;
+  margin-right: 10px;
+}
+.social-network {
+  padding-top: 3px;
+}
+.social-network:hover {
+  color: white;
+  background: none;
+  transform: scale(1.08);
+}
+.pikachu {
+  padding: 20px;
+}
 /* Creando un modal con CSS (w3schools) - Información Pokémon*/
 #modal {
   display: none;
   position: fixed;
   z-index: 5;
-  padding-top: 100px;
+  padding-top: 10%;
   left: 0;
   top: 0;
   width: 100%;
@@ -263,10 +320,10 @@ select {
 @media (max-width: 750px) {
   #modal {
     position: fixed;
-    padding-top: 450px;
+    padding-top: 30%;
   }
   #container-info-pokemon {
-    width: 70%;
+    width: 80%;
   }
 }
 #header-info-pokemon {
@@ -324,11 +381,4 @@ select {
   font-size: 15px;
   margin: auto;
   text-align: justify;
-}
-/* Pestaña "How to be a pokemon master" */
-#newContainer {
-  display: flex;
-  flex-flow: column;
-  text-align: center;
-  line-height: 40px;
 }

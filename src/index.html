@@ -22,11 +22,11 @@
         <label for="btn-menu"><img src="imagenes-portada/menu-icon.png"></label>
         <nav class ="menu">
           <ul>
-            <li><a href="index.html">Home</a href="#"></li>
-            <li><a href="#">Stadistics</a></li>
-            <li><a id='howTo' href="#">How to be a pokemon master?</a></li>
-            <li><a href='https://pokemongolive.com/es/' target='_blank'>Official Page</a></li>
-            <li><a id='probandoTop10' href="#">Top 10 más altos</a></li>
+            <li class='li'><a href="index.html">Home</a href="#"></li>
+            <li class='li'><a href="#">Stadistics</a></li>
+            <li class='li'><a id='howTo' href="#">How to be a pokemon master?</a></li>
+            <li class='li'><a href='http://www.pokemongo.com/' target='_blank'>Official Page</a></li>
+            <li class='li'><a id='probandoTop10' href="#">Top 10 más altos</a></li>
           </ul>
         </nav>   
       </section>
@@ -80,10 +80,21 @@
         <section class="cards-pokemon" id="containerPokemon"></section>
         
         <!--Pestaña 'How to be a pokemon master'-->
-        <section class="cards-pokemon" id="newContainer" style="display: none;">
-          <h3>Click on the video below to learn more about pokemon Go.</h3>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/Jgh3ZgX6-vQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <p>Take heart, you will soon become the best pokemon master!</p>
+        <section class="new-container" id="newContainer" style="visibility: hidden;">
+          <div class="section-video">
+            <h4>Click on the video below to learn more about Pokémon Go.</h4>
+            <iframe class="video-youtube" src="https://www.youtube.com/embed/Jgh3ZgX6-vQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p>Take heart, you will soon become the best Pokémon GO master!</p>
+          </div>
+          <aside class="sidebar">
+            <h5>Explore their official social networks</h5>
+            <ul class="ul-2">
+              <li class="li-2"><img class="logo-social-network" src="imagenes-portada/fb-logo.png"><a class="social-network" href="https://es-la.facebook.com/PokemonGO/" target='_blank'>Facebook PokémonGO</a></li>
+              <li class="li-2"><img class="logo-social-network" src="imagenes-portada/insta-logo.png"><a class="social-network" href="https://www.instagram.com/pokemongoapp/?hl=es-la" target='_blank'>Instagram PokémonGO</a></li>
+              <li class="li-2"><img class="logo-social-network" src="imagenes-portada/twitter-logo.png"><a class="social-network" href="https://twitter.com/PokemonGoApp" target='_blank'>Twitter PokémonGO</a></li>
+            </ul>
+            <img class="pikachu" src="imagenes-portada/giphy-pikachu.gif" alt="Gif de Pikachu">
+          </aside>
         </section>
 
         <!-- Espacio para el modal -->

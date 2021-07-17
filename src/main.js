@@ -27,6 +27,8 @@ elegirPokemon();
 
 //Funcionalidad para buscar pokemones por nombre
 btnSearch.onclick = function(){
+    document.getElementById('filterList').selectedIndex = 0;
+    document.getElementById('sortList').selectedIndex = 0;
     document.getElementById("containerPokemon").innerHTML ="";
     let textoMin = search.value.toLowerCase();
     for (let i=0; i<data.pokemon.length; i++){
@@ -44,22 +46,6 @@ btnSearch.onclick = function(){
     }
   }
 
-//botón para cargar el top 10 pokémon más pesados
-const callCompute = () => {
-    document.getElementById('containerPokemon').innerHTML = ` `;
-    return compute(data.pokemon).map((elemento)=>{
-        document.getElementById('containerPokemon').innerHTML += `
-            <div id=${elemento['num']} class="single-card">
-                <h3 class="num-card">Nº ${elemento['num']}</h3>
-                <span class="tooltip">Click to see information</span>
-                <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${elemento['num']}.png"></img>
-                <div class="name-card"> ${elemento['name']} </div>
-            </div> `
-    prueba();
-    });
-}
-document.getElementById('probandoTop10').addEventListener('click', callCompute)
-
 //muestra cards de los pokémon según el tipo seleccionado
 let selectTypePokemon = (tipo) => {
     return filterData(originalData, tipo).map((pokemonType)=>{
@@ -75,6 +61,7 @@ let selectTypePokemon = (tipo) => {
 //evento seleccionar opciones de tipo (FILTRO) - resumida 09/07
 document.getElementById('filterList').addEventListener('change', (e) => {
     document.getElementById('containerPokemon').innerHTML = ` `;
+    document.getElementById('sortList').selectedIndex = 0;
     selectTypePokemon(e.target.value);
     prueba();
 });
@@ -84,6 +71,8 @@ const container = document.getElementById("containerPokemon");
 
 document.getElementById("sortList").addEventListener("change", (e) => {
     container.innerHTML = " ";
+    document.getElementById('filterList').selectedIndex = 0;
+
     if (e.target.value === "A-Z" || e.target.value === "Z-A" ) {
         const sortArray = sortData(data.pokemon, "name", e.target.value); //appendChild
         for (let i = 0; i < data.pokemon.length; i++) {
@@ -146,18 +135,41 @@ prueba();
 //boton de limpiar búsqueda y filtros
 document.querySelector('.reset-search').addEventListener('click', ()=> {
     document.getElementById('containerPokemon').innerHTML = ` `;
+    document.getElementById('search').value = ``;
     document.getElementById('filterList').selectedIndex = 0;
     document.getElementById('sortList').selectedIndex = 0;
     elegirPokemon(data.pokemon);
-    callCompute();
     prueba();
 });
 
+//botón para cargar el top 10 pokémon más pesados
+const callCompute = () => {
+    document.querySelector('.video-youtube').removeAttribute('src');
+    document.getElementById('newContainer').style.visibility = 'hidden';
+    document.getElementById('containerInformacion').style.display = 'none';
+    document.getElementById('filterList').selectedIndex = 0;
+    document.getElementById('sortList').selectedIndex = 0;
+    document.getElementById('containerPokemon').innerHTML = ` `;
+    document.getElementById('containerPokemon').innerHTML = `<h3 style='width: 100%; text-align: center; margin: 20px 0;'>Cool! Budy, here you have the 10 highest pokemon in the region Kanto and Johto Regions! 📏</h3>`;
+    return compute([...data.pokemon]).map((elemento)=>{
+        document.getElementById('containerPokemon').innerHTML += `
+            <div id=${elemento['num']} class="single-card">
+                <h3 class="num-card">Nº ${elemento['num']}</h3>
+                <span class="tooltip">Click to see information</span>
+                <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${elemento['num']}.png"></img>
+                <div class="name-card"> ${elemento['name']} </div>
+            </div> `
+    prueba();
+    });
+}
+document.getElementById('probandoTop10').addEventListener('click', callCompute)
+
 //mostrando sección de How to be a pokemon master
 document.getElementById('howTo').addEventListener('click', ()=>{
-    document.getElementById('containerInformacion').innerHTML = ` `;
+    document.querySelector('.video-youtube').setAttribute('src', 'https://www.youtube.com/embed/Jgh3ZgX6-vQ');
+    document.getElementById('containerInformacion').style.display = 'none';
     document.getElementById('containerPokemon').innerHTML = ` `;
-    document.getElementById('newContainer').style.display = 'block';
+    document.getElementById('newContainer').style.visibility = 'visible';
 })
 
 //console.log(document.querySelectorAll(".single-card"))
