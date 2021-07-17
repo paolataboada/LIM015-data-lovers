@@ -26,7 +26,9 @@ function elegirPokemon(){
 elegirPokemon();
 
 //Funcionalidad para buscar pokemones por nombre
-btnSearch.onclick = function(){
+search.onkeyup= buscar;
+btnSearch.onclick = buscar;
+function buscar(){
     document.getElementById('filterList').selectedIndex = 0;
     document.getElementById('sortList').selectedIndex = 0;
     document.getElementById("containerPokemon").innerHTML ="";
