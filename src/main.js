@@ -14,6 +14,8 @@ const originalData = data.pokemon
 //esta función va a mostrar los pokemon
 function elegirPokemon(){
     for(let i=0; i< data.pokemon.length; i++){
+        //const typeColor = data.pokemon[i].type;
+        //console.log(typeColor[0]);
         document.getElementById("containerPokemon").innerHTML += `
             <div id=${data.pokemon[i]['num']} class="single-card">
                 <h3 class="num-card">Nº ${data.pokemon[i]['num']}</h3>
@@ -60,6 +62,7 @@ let selectTypePokemon = (tipo) => {
             </div> `
     })
 }
+
 //evento seleccionar opciones de tipo (FILTRO) - resumida 09/07
 document.getElementById('filterList').addEventListener('change', (e) => {
     document.getElementById('containerPokemon').innerHTML = ` `;
@@ -152,8 +155,8 @@ const callCompute = () => {
     document.getElementById('filterList').selectedIndex = 0;
     document.getElementById('sortList').selectedIndex = 0;
     document.getElementById('containerPokemon').innerHTML = ` `;
-    document.getElementById('containerPokemon').innerHTML = `<h3 style='width: 100%; text-align: center; margin: 20px 0;'>Cool! Budy, here you have the 10 highest pokemon in the region Kanto and Johto Regions! 📏</h3>`;
-    return compute([...data.pokemon]).map((elemento)=>{
+    document.getElementById('containerPokemon').innerHTML = `<h3 style='width: 100%; text-align: center; margin: 20px 0;'>Cool! Buddy, here you have the 10 highest pokemon in the region Kanto and Johto Regions! 📏</h3>`;
+    return compute([...data.pokemon], 10).map((elemento)=>{
         document.getElementById('containerPokemon').innerHTML += `
             <div id=${elemento['num']} class="single-card">
                 <h3 class="num-card">Nº ${elemento['num']}</h3>
@@ -185,14 +188,3 @@ document.getElementById('howTo').addEventListener('click', ()=>{
         replay(e.target.getAttribute('src'));
     })
  */
-
-
-/* const pesoPesado = (obj) => {
-    let sizePokemon = [];
-    obj.map((array)=> {
-        sizePokemon = array['size']['weight'];
-        return console.log(sizePokemon);
-    })
-
-};
-pesoPesado(data.pokemon) */
