@@ -46,25 +46,3 @@ export const compute = (dato) => {
   });
   return dato.slice(0,10);
 };
-
-export const typeColors = {
-  electric: '#F9CF30',
-  normal: '#AAA67F;',
-  fire: '#F57D31',
-  water: '#6493EB',
-  ice: '#9AD6DF',
-  rock: '#B69E31',
-  flying: '#A891EC',
-  grass: '#74CB48',
-  psychic: '#FB5584',
-  ghost: '#70559B',
-  bug: '#A7B723',
-  poison: '#A43E9E',
-  ground: '#DEC16B',
-  dragon: '#7037FF',
-  steel: '#B7B9D0',
-  fighting: '#C12239',
-  dark: '75574C',
-  fairy: 'E69EAC',
-  default: '#2A1A1F',
-};

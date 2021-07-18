@@ -1,4 +1,4 @@
-import { search, btnSearch, filterData, sortData, compute, typeColors } from './data.js';
+import { search, btnSearch, filterData, sortData, compute } from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 
@@ -14,6 +14,8 @@ const originalData = data.pokemon
 //esta función va a mostrar los pokemon
 function elegirPokemon(){
     for(let i=0; i< data.pokemon.length; i++){
+        //const typeColor = data.pokemon[i].type;
+        //console.log(typeColor[0]);
         document.getElementById("containerPokemon").innerHTML += `
             <div id=${data.pokemon[i]['num']} class="single-card">
                 <h3 class="num-card">Nº ${data.pokemon[i]['num']}</h3>
@@ -60,16 +62,6 @@ let selectTypePokemon = (tipo) => {
             </div> `
     })
 }
-
-/* //función para mostrar los tipos por colores
-const colorPokemonTypes = (types) => {
-    querySelector('.num-card').forEach(type => {
-        const typeTextElement = document.createElement("span");
-        typeTextElement.style.color = typeColors[type.type.name];
-        typeTextElement.textContent = type.type.name;
-    });
-}
-colorPokemonTypes('fairy') */
 
 //evento seleccionar opciones de tipo (FILTRO) - resumida 09/07
 document.getElementById('filterList').addEventListener('change', (e) => {
@@ -196,14 +188,3 @@ document.getElementById('howTo').addEventListener('click', ()=>{
         replay(e.target.getAttribute('src'));
     })
  */
-
-
-/* const pesoPesado = (obj) => {
-    let sizePokemon = [];
-    obj.map((array)=> {
-        sizePokemon = array['size']['weight'];
-        return console.log(sizePokemon);
-    })
-
-};
-pesoPesado(data.pokemon) */
