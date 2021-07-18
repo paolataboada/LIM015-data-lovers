@@ -38,11 +38,11 @@ export const sortData = function(data, sortBy, sortOrder){
     return  arrayOrdenado;
     };
 
-//función para calcular los 10 pokemones más altos (altura x m.)
-export const compute = (dato) => {
+//función para calcular los n=10 pokemones más altos (altura x m.)
+export const compute = (dato, n) => {
   dato.sort((a,b) => {
     if(a.size.height > b.size.height) return -1
     return 1
   });
-  return dato.slice(0,10);
+  return dato.slice(0,n);
 };

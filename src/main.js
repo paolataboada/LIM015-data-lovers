@@ -155,8 +155,8 @@ const callCompute = () => {
     document.getElementById('filterList').selectedIndex = 0;
     document.getElementById('sortList').selectedIndex = 0;
     document.getElementById('containerPokemon').innerHTML = ` `;
-    document.getElementById('containerPokemon').innerHTML = `<h3 style='width: 100%; text-align: center; margin: 20px 0;'>Cool! Budy, here you have the 10 highest pokemon in the region Kanto and Johto Regions! 📏</h3>`;
-    return compute([...data.pokemon]).map((elemento)=>{
+    document.getElementById('containerPokemon').innerHTML = `<h3 style='width: 100%; text-align: center; margin: 20px 0;'>Cool! Buddy, here you have the 10 highest pokemon in the region Kanto and Johto Regions! 📏</h3>`;
+    return compute([...data.pokemon], 10).map((elemento)=>{
         document.getElementById('containerPokemon').innerHTML += `
             <div id=${elemento['num']} class="single-card">
                 <h3 class="num-card">Nº ${elemento['num']}</h3>
