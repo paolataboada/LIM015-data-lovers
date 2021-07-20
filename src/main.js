@@ -9,7 +9,7 @@ const containerPokemon = document.getElementById("containerPokemon");
 const filterList = document.getElementById('filterList');
 const sortList = document.getElementById('sortList');
 
-//Esta función crea y MUESTRA los pokémon cards
+//Esta función crea y muestra los pokémon cards
 function loadedData(){
     for(let i=0; i< originalData.length; i++){
         containerPokemon.innerHTML += `
@@ -62,14 +62,6 @@ const selectTypePokemon = (typeSelected) => {
     })
 }
 
-
-//evento seleccionar opciones de tipo (FILTRO) - resumida 09/07
-/*document.getElementById('filterList').addEventListener('change', (event) => {
-    document.getElementById('containerPokemon').innerHTML = ` `;
-    document.getElementById('sortList').selectedIndex = 0;
-    selectTypePokemon(event.target.value);
-    prueba();*/
-
 //Este evento selecciona un value de 'filterList', luego invoca la función para MOSTRAR los pokémon cards
 filterList.addEventListener('change', (e) => {
     sortList.selectedIndex = 0;
@@ -86,7 +78,7 @@ document.getElementById("sortList").addEventListener("change", (event) => {
     filterList.selectedIndex = 0;
 
     if (event.target.value === "A-Z" || event.target.value === "Z-A" ) {
-        const sortArray = sortData(data.pokemon, "name", event.target.value); //appendChild
+        const sortArray = sortData(data.pokemon, "name", event.target.value); 
         
         for (let i = 0; i < data.pokemon.length; i++) {
 
@@ -103,8 +95,6 @@ document.getElementById("sortList").addEventListener("change", (event) => {
     if (event.target.value === "sortNumerically"){
         const sortArrayNum = sortData(data.pokemon, "num", event.target.value);
         for(let i=0; i<data.pokemon.length; i++) {
-
-            //appendChild
             document.getElementById("containerPokemon").innerHTML += ` 
             <div id="${sortArrayNum[i].num}" class="single-card">
             <h3 class="num-card">Nº ${sortArrayNum[i].num}</h3>
@@ -148,7 +138,6 @@ document.getElementById("sortList").addEventListener("change", (event) => {
 const openModal = () => {
     document.querySelectorAll(".single-card").forEach(card => card.addEventListener('click', (e)=>{
         e.stopPropagation();
-        //console.log(e.currentTarget.id);
         createModal(e.currentTarget.id)
     })
     );
@@ -193,4 +182,4 @@ document.getElementById('howToBePokemonMaster').addEventListener('click', ()=>{
     document.getElementById('searchAreaContainer').style.display = 'none';
     containerPokemon.innerHTML = ` `;
     document.getElementById('newContainer').style.visibility = 'visible';
-})
+});

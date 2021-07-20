@@ -14,11 +14,10 @@ body {
 }
 /* Header/Encabezado principal */
 .logo-fondo {
-  /*  background-image: url("imagenes-portada/Imagen1.png"); */
   width: 100%;
   display: flex;
-  /* box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2); */
 }
+/* Diseño barra Menu*/
 .barraMenu {
   width: 100%;
   background-color: #4a7eaa;
@@ -56,6 +55,7 @@ body {
   color: #ffff;
   text-decoration: none;
 }
+/* Menu despegable que se activa en responsive  */
 @media (max-width: 768px) {
   .barraMenu label {
     display: block;
@@ -92,7 +92,8 @@ a:hover {
   background: rgb(48, 51, 51);
   color: white;
 }
-/* Subcontenedor */
+
+/* Subcontenedor para las opciones despegables y bienvenida */
 .search-area-container {
   padding: 20px 30px;
   display: flex;
@@ -132,7 +133,8 @@ a:hover {
   border-radius: 7px;
   cursor: pointer;
 }
-@media (max-width: 548px) {
+/* Responsive para el btn buscar */
+@media (max-width: 489px) {
   .spaceSearch {
     display: flex;
     justify-content: space-between;
@@ -157,6 +159,7 @@ select {
   font-weight: bolder;
   cursor: pointer;
 }
+/* Boton de reseteo de búsqueda */
 .reset-search {
   width: 160px;
   padding: 10px;
@@ -173,14 +176,14 @@ select {
   border: 1px solid rgb(48, 51, 51);
   color: white;
 }
-/* Subcontenedor: Sección de cards interactivos */
+/* Sección de todas las cards interactivas */
 .cards-pokemon {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
   z-index: 1;
 }
-/* Subcontenedor: Divs creados por JS */
+/* Divs creados por JS */
 .single-card {
   width: 210px;
   height: 250px;
@@ -256,7 +259,7 @@ select {
 .new-container {
   padding: 25px;
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
   justify-content: space-around;
 }
 .section-video {
@@ -307,7 +310,25 @@ h5 {
 .pikachu-gif {
   padding: 20px;
 }
-/* Creando un modal con CSS (w3schools) - Información Pokémon*/
+/* Responsive del section how to be a pokemon master */
+@media (max-width:768px){
+  .video-youtube{
+    width: 80%;
+  }
+  .new-container{
+    flex-flow: column;
+  }
+  .section-video{
+    width:100%;
+  }
+  .sidebar{
+    width:60%;
+    align-self: center;
+    margin: 25px;
+
+  }
+}
+/* Creando modal- Información Pokémon*/
 #modal {
   display: none;
   position: fixed;
@@ -332,7 +353,8 @@ h5 {
   width: 35%;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
-@media (max-width: 750px) {
+/* Responsive del modal */
+@media (max-width: 768px) {
   #modal {
     position: fixed;
     padding-top: 30%;
