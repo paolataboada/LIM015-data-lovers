@@ -1,4 +1,4 @@
-import { search, btnSearch, filterData, sortData, compute } from './data.js';
+import {  filterData, sortData, compute } from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 
@@ -23,7 +23,10 @@ function loadedData(){
 }
 loadedData();
 
+
 //Funcionalidad para buscar pokemones por nombre
+const search = document.getElementById("search");
+const btnSearch = document.getElementById("btnSearch");
 search.onkeyup= buscar;
 btnSearch.onclick = buscar;
 function buscar(){
@@ -58,23 +61,34 @@ const selectTypePokemon = (typeSelected) => {
             </div> `
     })
 }
+
+
+//evento seleccionar opciones de tipo (FILTRO) - resumida 09/07
+/*document.getElementById('filterList').addEventListener('change', (event) => {
+    document.getElementById('containerPokemon').innerHTML = ` `;
+    document.getElementById('sortList').selectedIndex = 0;
+    selectTypePokemon(event.target.value);
+    prueba();*/
+
 //Este evento selecciona un value de 'filterList', luego invoca la función para MOSTRAR los pokémon cards
 filterList.addEventListener('change', (e) => {
     sortList.selectedIndex = 0;
     containerPokemon.innerHTML = ` `;
     selectTypePokemon(e.target.value);
     openModal();
+
 });
 
 //interacción del boton ordenar
 const container = document.getElementById("containerPokemon");
 
-document.getElementById("sortList").addEventListener("change", (e) => {
+document.getElementById("sortList").addEventListener("change", (event) => {
     container.innerHTML = " ";
     filterList.selectedIndex = 0;
 
-    if (e.target.value === "A-Z" || e.target.value === "Z-A" ) {
-        const sortArray = sortData(data.pokemon, "name", e.target.value); //appendChild
+    if (event.target.value === "A-Z" || event.target.value === "Z-A" ) {
+        const sortArray = sortData(data.pokemon, "name", event.target.value); //appendChild
+        
         for (let i = 0; i < data.pokemon.length; i++) {
 
         document.getElementById("containerPokemon").innerHTML += `
@@ -87,8 +101,8 @@ document.getElementById("sortList").addEventListener("change", (e) => {
         }
     }
 
-    if (e.target.value === "sortNumerically"){
-        const sortArrayNum = sortData(data.pokemon, "num", e.target.value);
+    if (event.target.value === "sortNumerically"){
+        const sortArrayNum = sortData(data.pokemon, "num", event.target.value);
         for(let i=0; i<data.pokemon.length; i++) {
 
             //appendChild
@@ -104,20 +118,32 @@ document.getElementById("sortList").addEventListener("change", (e) => {
     openModal();
 });
 
-//Esta función escribe en los elementos del doc la información del pokemon seleccionado - MODAL
-function createModal(idCard){
-    const newInfo = originalData.find(fin => fin.num == idCard);//crear variable y guardar array para aplicar método find();
-        document.getElementById('name-info-pokemon').innerHTML = `N° ${newInfo.num} ${newInfo.name}`;
-        document.getElementById('imagen-info-pokemon').innerHTML = `<img class="imagen-info-pokemon" src="https://www.serebii.net/pokemongo/pokemon/${newInfo.num}.png"></img>`;
-        document.getElementById('height-info-pokemon').innerHTML = `Height: ${newInfo.size['height']}`;
-        document.getElementById('weight-info-pokemon').innerHTML = `Weight: ${newInfo.size['weight']}`;
-        document.getElementById('egg-info-pokemon').innerHTML = `Egg: ${newInfo.egg}`;
-        document.getElementById('encounter-info-pokemon').innerHTML = `Encounter rate: ${newInfo.encounter['base-capture-rate']}`;
-        document.getElementById('about-info-pokemon').innerHTML = `Description: ${newInfo.about}`;
-    document.getElementById('modal').style.display = 'block';
-    document.getElementById('close').addEventListener('click', ()=>{
-        document.getElementById('modal').style.display = 'none';
-    })
+
+// Esta función escribe en los elementos del doc la información del pokemon seleccionado - MODAL
+  function createModal (idCard){
+      const infoCard=data.pokemon.find(pokeNum=>pokeNum.num == idCard);
+       document.querySelector("#container-info-pokemon").innerHTML = `
+            <div id="header-info-pokemon">
+            <h3 id="name-info-pokemon">N° ${infoCard.num} ${infoCard.name}</h3>
+            <h3 id="close">x</h3>
+            </div>
+            <div id="small-info-pokemon">
+            <div id="imagen-info-pokemon">
+                <img class="imagen-info-pokemon" src="https://www.serebii.net/pokemongo/pokemon/${infoCard.num}.png">
+            </div>
+            <div id="first-info-pokemon">
+                <p id="height-info-pokemon">Height: ${infoCard.size.height}</p>
+                <p id="weight-info-pokemon">Weight: ${infoCard.size.weight}</p>
+                <p id="egg-info-pokemon">Egg: ${infoCard.egg} </p>
+                <p id="encounter-info-pokemon">Encounter rate: ${infoCard.encounter['base-capture-rate']}</p>
+            </div>
+            </div>
+            <article id="about-info-pokemon">Description: ${infoCard.about} </article>
+       `
+       document.getElementById('modal').style.display = 'block';
+       document.getElementById('close').addEventListener('click', ()=>{
+    document.getElementById('modal').style.display = 'none';
+  });
 }
 
 //Esta función permite abrir el modal con la información

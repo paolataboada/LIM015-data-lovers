@@ -1,4 +1,4 @@
-import { /* example, */ filterData, compute } from '../src/data.js';
+import { /* example, */ filterData, sortData, compute } from '../src/data.js';
 
 
 /* describe('example', () => {
@@ -11,7 +11,6 @@ import { /* example, */ filterData, compute } from '../src/data.js';
   });
 });
  */
-
 describe('filterData', () => {
   it('is a function', () => {
     expect(typeof filterData).toBe('function');
@@ -49,6 +48,80 @@ describe('filterData', () => {
 /*   it('returns `data`', () => {
     expect(anotherExample()).toBe('OMG');
   }); */
+});
+
+describe('sortData', () => {
+  it('is a function', () => {
+    expect(typeof sortData).toBe('function');
+  });
+
+  const messyPokemon1 =[
+    {num: "101", name: "electrode",},
+    {num: "102", name: "exeggcute",},
+    {num: "103", name: "exeggutor",},
+    {num: "104", name: "cubone",},
+    {num: "105", name: "marowak",},
+    {num: "106", name: "hitmonlee",},
+    {num: "107", name: "hitmonchan",},
+    {num: "108", name: "lickitung",},
+  ]
+
+  const sortAZ= [
+    {num: "104", name: "cubone",},
+    {num: "101", name: "electrode",},
+    {num: "102", name: "exeggcute",},
+    {num: "103", name: "exeggutor",},
+    {num: "107", name: "hitmonchan",},
+    {num: "106", name: "hitmonlee",},
+    {num: "108", name: "lickitung",},
+    {num: "105", name: "marowak",},
+  ]
+
+  const messyPokemon2 =[
+    {num: "101", name: "electrode",},
+    {num: "103", name: "exeggutor",},
+    {num: "104", name: "cubone",},
+    {num: "105", name: "marowak",},
+    {num: "107", name: "hitmonchan",},
+  ]
+
+  const sortZA= [
+    {num: "105", name: "marowak",},
+    {num: "107", name: "hitmonchan",},
+    {num: "103", name: "exeggutor",},
+    {num: "101", name: "electrode",},
+    {num: "104", name: "cubone",},
+  ]
+
+  const messyPokemon3= [
+    {num: "217", name: "ursaring",},
+    {num: "218", name: "slugma",},
+    {num: "219", name: "magcargo",},
+    {num: "220", name: "swinub",},
+    {num: "221", name: "piloswine",},
+  ]
+
+  const sortDescending= [
+    {num: "221", name: "piloswine",},
+    {num: "220", name: "swinub",},
+    {num: "219", name: "magcargo",},
+    {num: "218", name: "slugma",},
+    {num: "217", name: "ursaring",},
+  ]
+
+  it('should be an object', () => {
+    expect(typeof sortData('')).toBe('object');
+  });
+  it('should sort alphabetically from A to Z', () => {
+    expect (sortData(messyPokemon1, "name", "A-Z")).toEqual(sortAZ);
+  });
+  it('should sort alphabetically from Z to A', ()=> {
+    expect (sortData(messyPokemon2, "name", "Z-A")).toEqual(sortZA);
+  });
+  it('should sort descending from 221 to 217', () =>{
+    expect (sortData(messyPokemon3, "num", "sortNumerically")).toEqual(sortDescending);
+  });
+
 });
 
 describe('compute', () => {
