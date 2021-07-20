@@ -7,7 +7,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 /* Contenedor global */
-.contenedor-principal {
+.main-container {
   background-color: #f7f7f7;
   margin: 10px;
   border-radius: 30px;
@@ -83,7 +83,7 @@ a {
   font-weight: bolder;
   color: black;
 }
-.li:hover {
+.menu-options:hover {
   opacity: 0.6;
   background: rgb(48, 51, 51);
   border: 1px solid white;
@@ -93,14 +93,14 @@ a:hover {
   color: white;
 }
 /* Subcontenedor */
-.contenedor-de-informacion {
+.search-area-container {
   padding: 20px 30px;
   display: flex;
   flex-flow: column;
   align-items: center;
   text-align: center;
 }
-.frase-bienvenida {
+.welcome-phrase {
   text-align: center;
   padding: 10px;
 }
@@ -142,7 +142,7 @@ a:hover {
   }
 }
 /* Subcontenedor: Listas desplegables */
-.listas-desplegables-y-limpiar {
+.dropdown-lists-and-reset-button {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -283,11 +283,11 @@ h5 {
   align-self: center;
   margin: 15px;
 }
-.ul-2 {
+.ul-social-net {
   display: flex;
   flex-flow: column nowrap;
 }
-.li-2 {
+.list-sn {
   list-style: none;
   margin: 5px 35px;
   display: flex;
@@ -296,15 +296,15 @@ h5 {
   width: 25px;
   margin-right: 10px;
 }
-.social-network {
+.social-network-link {
   padding-top: 3px;
 }
-.social-network:hover {
+.social-network-link:hover {
   color: white;
   background: none;
   transform: scale(1.08);
 }
-.pikachu {
+.pikachu-gif {
   padding: 20px;
 }
 /* Creando un modal con CSS (w3schools) - Información Pokémon*/
