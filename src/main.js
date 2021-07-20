@@ -62,12 +62,14 @@ const selectTypePokemon = (typeSelected) => {
     })
 }
 
+
 //evento seleccionar opciones de tipo (FILTRO) - resumida 09/07
-/* document.getElementById('filterList').addEventListener('change', (event) => {
+/*document.getElementById('filterList').addEventListener('change', (event) => {
     document.getElementById('containerPokemon').innerHTML = ` `;
     document.getElementById('sortList').selectedIndex = 0;
     selectTypePokemon(event.target.value);
-    prueba(); */
+    prueba();*/
+
 //Este evento selecciona un value de 'filterList', luego invoca la función para MOSTRAR los pokémon cards
 filterList.addEventListener('change', (e) => {
     sortList.selectedIndex = 0;
