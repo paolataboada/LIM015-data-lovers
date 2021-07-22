@@ -122,14 +122,17 @@ El proyecto cumple con las siguientes características:
 Realizamos 3 historias de usuario:
 
 En la primera historia de Usuario definimos como usuario a aquel jugador aficionado de Pokémon GO! :
+
 ![H1](https://user-images.githubusercontent.com/85121220/126589940-73312280-bd3a-43aa-8825-67fabe608056.PNG)
 
 En la segunda historia de usuario definimos al jugador junior de Pokémon GO! como usuario final, 
 donde tendrá acceso a las características de cada pokémon:
+
 ![H2](https://user-images.githubusercontent.com/85121220/126590327-28215749-5e60-45c6-be7f-4e4399fd936c.PNG)
 
 En la tercera historia de usuario el jugador intermedio de Pokémon GO! es el usuario final, 
 donde contará con la herramienta de filtrado por tipos y podrá ordenarlos de acuerdo a diferentes opciones:
+
 ![H3](https://user-images.githubusercontent.com/85121220/126590536-b5d4bd93-c47c-462f-9186-19d8b26c023b.PNG)
 
 
@@ -151,12 +154,15 @@ Posteriormente desarrollamos los [prototipos de alta fidelidad](https://www.figm
 pantallas a mostrar: 
 
 En esta imagen visualizamos la pantalla de bienvenida con la lista de los 251 pokemones:
+
 ![Prototipo1](https://user-images.githubusercontent.com/85121220/126590719-7147ebed-dc9d-4874-9948-273d7c423b3c.PNG)
 
 En la siguiente imagen se puede observar las caracteristicas del pokémon elegido:
+
 ![Prototipo2](https://user-images.githubusercontent.com/85121220/126590736-813fc3a9-1a8c-4343-865a-24869ad655dd.PNG)
 
 Esta imagen muestra la lista desplegable que habíamos diseñado inicialmente:
+
 ![Prototipo3](https://user-images.githubusercontent.com/85121220/126590756-4886af1f-1650-4bb1-a8ac-282b3e496b9a.PNG)
 
 Posteriormente a través de los diferentes testeos de usabilidad que se realizaron,
