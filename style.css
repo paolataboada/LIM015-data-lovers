@@ -7,60 +7,84 @@ body {
   font-family: "Poppins", sans-serif;
 }
 /* Contenedor global */
-.contenedor-principal {
+.main-container {
   background-color: #f7f7f7;
-  margin: 15px;
-  border-radius: 50px 50px 15px 15px;
+  margin: 10px;
+  border-radius: 30px;
 }
 /* Header/Encabezado principal */
-.encabezado-principal {
-  background-image: url("imagenes-portada/fondo-cielo.png");
-  padding: 20px;
-  border-radius: 50px;
+.logo-fondo {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  flex-flow: row wrap;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
-.logo-pokemon {
-  width: 23%;
-  margin: 5px;
+/* Diseño barra Menu*/
+.barraMenu {
+  width: 100%;
+  background-color: #4a7eaa;
 }
-.logo-pokemon:hover {
-  transform: scale(1.2);
+#btn-menu {
+  display: none;
 }
-.lugia {
-  width: 20%;
-  position: absolute;
-  top: -30px;
-  right: -10px;
+.barraMenu label {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
 }
-.lugia:hover {
-  transform: scale(1.2);
+.barraMenu label:hover {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
 }
-/* Botones del header */
-ul {
+.menu ul {
+  margin: 0%;
   list-style: none;
+  padding: 0;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  margin-right: 250px;
+  justify-content: flex-end;
 }
-li {
-  margin: 10px;
-  padding: 8px 15px;
-  border-radius: 5px;
-  background: white;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+.menu li {
+  text-align: center;
+  flex-grow: 1;
 }
+.menu li:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+.menu li a {
+  display: block;
+  padding: 15px 20px;
+  color: #ffff;
+  text-decoration: none;
+}
+/* Menu despegable que se activa en responsive  */
+@media (max-width: 768px) {
+  .barraMenu label {
+    display: block;
+  }
+  .menu {
+    position: absolute;
+    background-color: #4a7eaa;
+    width: 70%;
+    margin-left: -80%;
+  }
+  .menu ul {
+    flex-direction: column;
+  }
+  .menu li {
+    border-top: 1px solid #ffff;
+  }
+  #btn-menu:checked ~ .menu {
+    margin: 0%;
+    z-index:100;
+  }
+}
+
 a {
   text-decoration: none;
   font-size: 14px;
   font-weight: bolder;
   color: black;
 }
-li:hover {
+.menu-options:hover {
   opacity: 0.6;
   background: rgb(48, 51, 51);
   border: 1px solid white;
@@ -69,51 +93,98 @@ a:hover {
   background: rgb(48, 51, 51);
   color: white;
 }
-/* Subcontenedor */
-.contenedor-de-informacion {
+
+/* Subcontenedor para las opciones despegables y bienvenida */
+.search-area-container {
   padding: 20px 30px;
   display: flex;
   flex-flow: column;
   align-items: center;
+  text-align: center;
 }
-.frase-bienvenida {
+.welcome-phrase {
   text-align: center;
   padding: 10px;
 }
-.pokeball-background {
-  position: fixed;
-  margin-top: 150px;
-  text-align: center;
-  width: 240px;
+/* Boton Buscar */
+.search {
+  background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png)
+    no-repeat 210px 3px;
+  outline: none;
+  width: 250px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  border: 1px solid rgb(121, 121, 121);
+  border-radius: 7px;
+}
+.buttonSearch {
+  font-family: "Poppins";
+  font-size: 15px;
+  color: #f4faf8;
+  width: 160px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+  font-weight: bolder;
+  background-color: #e79416;
+  border: 1px solid rgb(121, 121, 121);
+  border-radius: 7px;
+  cursor: pointer;
+}
+/* Responsive para el btn buscar */
+@media (max-width: 489px) {
+  .spaceSearch {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+  }
 }
 /* Subcontenedor: Listas desplegables */
-.listas-desplegables {
+.dropdown-lists-and-reset-button {
   display: flex;
   flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 }
 select {
   width: 250px;
-  border-radius: 5px;
+  border-radius: 7px;
   margin: 10px;
   padding: 10px;
   font-family: "Poppins", sans-serif;
   font-weight: bolder;
+  cursor: pointer;
 }
-/* Subcontenedor: Sección de cards interactivos */
-.has-elegido {
-  align-self: flex-start;
-  padding-left: 40px;
-  margin: 10px 0;
+/* Boton de reseteo de búsqueda */
+.reset-search {
+  width: 160px;
+  padding: 10px;
+  margin: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
   font-weight: bolder;
-  font-size: 18px;
+  cursor: pointer;
+  border-radius: 7px;
+  border: 1px solid rgb(121, 121, 121);
 }
+.reset-search:hover {
+  background: #e79416;
+  border: 1px solid rgb(48, 51, 51);
+  color: white;
+}
+/* Sección de todas las cards interactivas */
 .cards-pokemon {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
   z-index: 1;
 }
-/* Subcontenedor: Divs creados por JS */
+/* Divs creados por JS */
 .single-card {
   width: 210px;
   height: 250px;
@@ -143,7 +214,7 @@ select {
   font-size: 11px;
   text-align: center;
   padding: 5px 8px;
-  z-index: 10;
+  z-index: 2;
   align-self: center;
   top: 5%;
   right: 10%;
@@ -185,12 +256,85 @@ select {
   background: #74cb48;
   border-radius: 0 0 5px 5px;
 }
-/* Creando un modal con CSS (w3schools) - Información Pokémon*/
+/* Section: "How to be a pokemon master" */
+.new-container {
+  padding: 25px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+.section-video {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+}
+.video-youtube {
+  width: 560px;
+  height: 315px;
+  margin: 15px 0;
+}
+.sidebar {
+  display: flex;
+  flex-flow: column;
+  width: 30%;
+  padding: 15px 5px;
+  background: #c3c7f5;
+  border-radius: 5px;
+}
+h5 {
+  align-self: center;
+  margin: 15px;
+}
+.ul-social-net {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.list-sn {
+  list-style: none;
+  margin: 5px 35px;
+  display: flex;
+}
+.logo-social-network {
+  width: 25px;
+  margin-right: 10px;
+}
+.social-network-link {
+  padding-top: 3px;
+}
+.social-network-link:hover {
+  color: white;
+  background: none;
+  transform: scale(1.08);
+}
+.pikachu-gif {
+  padding: 20px;
+}
+/* Responsive del section how to be a pokemon master */
+@media (max-width:768px){
+  .video-youtube{
+    width: 80%;
+  }
+  .new-container{
+    flex-flow: column;
+  }
+  .section-video{
+    width:100%;
+  }
+  .sidebar{
+    width:60%;
+    align-self: center;
+    margin: 25px;
+
+  }
+}
+/* Creando modal- Información Pokémon*/
 #modal {
   display: none;
   position: fixed;
-  z-index: 1;
-  padding-top: 100px;
+  z-index: 5;
+  padding-top: 10%;
   left: 0;
   top: 0;
   width: 100%;
@@ -210,13 +354,14 @@ select {
   width: 35%;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
-@media (max-width: 750px) {
+/* Responsive del modal */
+@media (max-width: 768px) {
   #modal {
     position: fixed;
-    padding-top: 450px;
+    padding-top: 30%;
   }
   #container-info-pokemon {
-    width: 70%;
+    width: 80%;
   }
 }
 #header-info-pokemon {

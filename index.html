@@ -4,84 +4,106 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokémon</title>
+    <link rel="icon" href="imagenes-portada/pokeball-background.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section class="contenedor-principal">
-      <header class="encabezado-principal">
-        <img class="logo-pokemon" src="imagenes-portada/pokemon-logo.png" alt="Logo Pokémon">
-        <ul><li><a href="#">Inicio</a></li>
-            <li><a href="#">Cómo ser maestro pokémon</a></li>
-            <li><a href="#">Horarios de Aparición</a></li>
-        </ul>
-        <img class="lugia" src="imagenes-portada/especial-lugia.png" alt="Pokemon Lugia">
+    <main class="main-container">
+      <header class="main-header"><!-- Imagen header -->
+        <img class="logo-fondo" src= "imagenes-portada/lugia-hooh.png" alt="Lugia Ho Oh">
       </header>
-      
-      <section class="contenedor-de-informacion">
-        <h4 class="frase-bienvenida">Te damos la bienvenida a la pokebola! Conoce todos los pokemones de la Región Kanto</h4> 
-        <img class="pokeball-background" src="imagenes-portada/pokeball-background.png" alt="Pokeball de fondo">
-        <!--Listas desplegables de ordenar y filtrar-->
-        <div class="listas-despeglables">
-          <select id="sortList">
-            <option disabled selected>Ordenar</option>
-            <option value="A-Z">Ordenar de A-Z</option>
-            <option value="Z-A">Ordena de Z-A</option>
-            <option value="sortNumerically">Ordenar numericamente</option>
-          </select>
-          <select id="filterList">
-            <option disabled selected>Filtrar por tipo</option>
-            <option value= "bug">Bicho</option>
-            <option value= "dark">Siniestro</option>
-            <option value= "dragon">Dragón</option>
-            <option value= "grass">Planta</option>
-            <option value= "poison">Venenoso</option>
-            <option value= "normal">Normal</option>
-            <option value= "fire">Fuego</option>
-            <option value= "flying">Volador</option>
-            <option value= "water">Agua</option>
-            <option value= "ground">Tierra</option>
-            <option value= "fighting">Lucha</option>
-            <option value= "rock">Roca</option>
-            <option value= "ice">Hielo</option>
-            <option value= "electric">Eléctrico</option>
-            <option value= "fairy">Hada</option>
-            <option value= "ghost">Fantasma</option>
-            <option value= "psychic">Psíquico</option>
-            <option value= "steel">Acero</option>
-          </select>
+  
+      <!----------Menu Responsive con las opciones principales-------->
+      <section class="barraMenu">
+        <input type="checkbox" id="btn-menu">
+        <label for="btn-menu"><img src="imagenes-portada/menu-icon.png"></label>
+        <nav class ="menu">
+          <ul>
+            <li class="menu-options"><a href="index.html">Home</a></li>
+            <li class="menu-options"><a id="howToBePokemonMaster" href="#">How to be a pokemon master?</a></li>
+            <li class="menu-options"><a href="http://www.pokemongo.com/" target="_blank">Official Page</a></li>
+            <li class="menu-options"><a id="topTenHeight" href="#">Top 10 Largest Pokemon by Height</a></li>
+            <li class="menu-options"><a id = "topTenWeight" href="#">Top 10 Heaviest Pokemon </a></li>
+          </ul>
+        </nav>   
+      </section>
+  
+      <!-- Área de Búsqueda y Listas desplegables -->
+      <section class="search-area-container" id="searchAreaContainer">
+        <h4 class="welcome-phrase">Welcome to the pokeball! Meet all pokemon of the Kanto and Johto Regions</h4> 
+  
+        <!--------------- Boton Buscar --------------->
+        <div class="spaceSearch">
+          <input type ="text" id="search" placeholder="Search by pokemon name" class="search" autocomplete="off">
+          <button id="btnSearch" class="buttonSearch"> Search </button> 
         </div>
+        
+        <!--Listas desplegables de ordenar y filtrar-->
+        <div class="dropdown-lists-and-reset-button">
+          <select id="sortList"><!----Ordenar---->
+            <option disabled selected>Sort</option>
+            <option value="A-Z">Sort from A-Z</option>
+            <option value="Z-A">Sort from Z-A</option>
+            <option value="sortNumerically">Sort Numerically Descending</option>
+          </select>
+          <select id= "filterList"><!----Filtrar---->
+            <option disabled selected>Filter by type</option>
+            <option value= "bug">Bug</option>
+            <option value= "dark">Dark</option>
+            <option value= "dragon">Dragon</option>
+            <option value= "grass">Grass</option>
+            <option value= "poison">Poison</option>
+            <option value= "normal">Normal</option>
+            <option value= "fire">Fire</option>
+            <option value= "flying">Flying</option>
+            <option value= "water">Water</option>
+            <option value= "ground">Ground</option>
+            <option value= "fighting">Fighting</option>
+            <option value= "rock">Rock</option>
+            <option value= "ice">Ice</option>
+            <option value= "electric">Electric</option>
+            <option value= "fairy">Fairy</option>
+            <option value= "ghost">Ghost</option>
+            <option value= "psychic">Psychic</option>
+            <option value= "steel">Steel</option>
+          </select>
+          <button class="reset-search">Reset search</button>
+        </div>
+      </section>
 
-        <!--Cards interactivos de los 251 pokémon-->
-        <section class="has-elegido" id="printChoice"></section>
-        <section class="cards-pokemon" id="containerPokemon"></section>
+      <!-- Cards interactivos de los 251 pokémon -->
+      <section class="cards-pokemon" id="containerPokemon"></section>
+        
+      <!-- Pestaña 'How to be a pokemon master' -->
+      <section class="new-container" id="newContainer" style="visibility: hidden;">
+        <div class="section-video">
+          <h4>Click on the video below to learn more about Pokémon Go.</h4>
+          <iframe class="video-youtube" src="https://www.youtube.com/embed/Jgh3ZgX6-vQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p>Take heart, you will soon become the best Pokémon GO master!</p>
+        </div>
+        <aside class="sidebar">
+          <h5>Explore their official social networks</h5>
+          <ul class="ul-social-net">
+            <li class="list-sn"><img class="logo-social-network" src="imagenes-portada/fb-logo.png"><a class="social-network-link" href="https://es-la.facebook.com/PokemonGO/" target="_blank">Facebook PokémonGO</a></li>
+            <li class="list-sn"><img class="logo-social-network" src="imagenes-portada/insta-logo.png"><a class="social-network-link" href="https://www.instagram.com/pokemongoapp/?hl=es-la" target="_blank">Instagram PokémonGO</a></li>
+            <li class="list-sn"><img class="logo-social-network" src="imagenes-portada/twitter-logo.png"><a class="social-network-link" href="https://twitter.com/PokemonGoApp" target="_blank">Twitter PokémonGO</a></li>
+          </ul>
+          <img class="pikachu-gif" src="imagenes-portada/giphy-pikachu.gif" alt="Gif de Pikachu">
+        </aside>
+      </section>
 
         <!-- Espacio para el modal -->
         <section id="modal">
-          <div id="container-info-pokemon">
-            <div id="header-info-pokemon">
-              <h3 id="name-info-pokemon">N° </h3>
-              <h3 id="close">x</h3>
-            </div>
-            <div id="small-info-pokemon">
-              <div id="imagen-info-pokemon"></div>
-              <div id="first-info-pokemon">
-                <p id="height-info-pokemon">Height: </p>
-                <p id="weight-info-pokemon">Weight: </p>
-                <p id="egg-info-pokemon">Egg: </p>
-                <p id="encounter-info-pokemon">Encounter rate: </p>
-              </div>
-            </div>
-            <article id="about-info-pokemon">Description: </article>
-          </div>
+          <div id="container-info-pokemon"></div>
         </section>
 
-      </section>
-    </section>
+    </main>
+    <footer style="text-align: center; font-weight: bold;">  ©️ Created by Paola Taboada Alanoca & Dafne Aquino Manyari </footer>
     <div id="root"></div>
     <script src="main.js" type="module"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   </body>
 </html>

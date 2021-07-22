@@ -1,18 +1,42 @@
-import { filterData, sortData } from './data.js';
+import {  filterData, sortData, greaterHeight, greaterWeight } from './data.js';
 
 import data from './data/pokemon/pokemon.js';
 
 //console.log(example, data);
 
-/*let numero = data.pokemon[0]['num'];
-let nombre = data.pokemon[0]['name'];
-let imagen = data.pokemon[0]['img'];
+const originalData = data.pokemon;
+const containerPokemon = document.getElementById("containerPokemon");
+const filterList = document.getElementById('filterList');
+const sortList = document.getElementById('sortList');
 
-document.getElementById("containerPokemon").innerHTML += "Aquí debe aparecer el pokemon" + numero + nombre + imagen; */
+//Esta función crea y muestra los pokémon cards
+function loadedData(){
+    for(let i=0; i< originalData.length; i++){
+        containerPokemon.innerHTML += `
+            <div id=${originalData[i]['num']} class="single-card">
+                <h3 class="num-card">Nº ${originalData[i]['num']}</h3>
+                <span class="tooltip">Click to see information</span>
+                <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${originalData[i]['num']}.png"></img>
+                <div class="name-card"> ${originalData[i]['name']} </div>
+            </div> `
+    }
+}
+loadedData();
 
-//esta función va a mostrar los pokemon
-function elegirPokemon(data){
-    for(let i=0; i< data.pokemon.length; i++){
+
+//Funcionalidad para buscar pokemones por nombre
+const search = document.getElementById("search");
+const btnSearch = document.getElementById("btnSearch");
+search.onkeyup= buscar;
+btnSearch.onclick = buscar;
+function buscar(){
+    filterList.selectedIndex = 0;
+    sortList.selectedIndex = 0;
+    document.getElementById("containerPokemon").innerHTML ="";
+    let textoMin = search.value.toLowerCase();
+    for (let i=0; i<data.pokemon.length; i++){
+      let dataMin= data.pokemon[i].name.toLowerCase();
+      if(dataMin.indexOf(textoMin) !== -1){
         document.getElementById("containerPokemon").innerHTML += `
         <div id=${data.pokemon[i]['num']} class="single-card">
             <h3 class="num-card">Nº ${data.pokemon[i]['num']}</h3>
@@ -20,36 +44,42 @@ function elegirPokemon(data){
             <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${data.pokemon[i]['num']}.png"></img>
             <div class="name-card"> ${data.pokemon[i]['name']} </div>
         </div> `
+        openModal();
+      }
     }
-}
-elegirPokemon(data);
+  }
 
-//muestra cards de los pokémon según el tipo seleccionado
-let selectTypePokemon = (tipo) => {
-    return filterData(data.pokemon, tipo).map((pokemonType)=>{
-        document.getElementById("containerPokemon").innerHTML += `
-        <div id=${pokemonType['num']} class="single-card">
-            <h3 class="num-card">Nº ${pokemonType.num}</h3>
-            <span class="tooltip">Click to see information</span>
-            <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${pokemonType['num']}.png"></img>
-            <div class="name-card"> ${pokemonType.name} </div>
-        </div> `
+//Esta función crea los pokémon cards según el tipo seleccionado
+const selectTypePokemon = (typeSelected) => {
+    return filterData(originalData, typeSelected).map((pokemonType)=>{
+        containerPokemon.innerHTML += `
+            <div id=${pokemonType['num']} class="single-card">
+                <h3 class="num-card">Nº ${pokemonType['num']}</h3>
+                <span class="tooltip">Click to see information</span>
+                <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${pokemonType['num']}.png"></img>
+                <div class="name-card"> ${pokemonType['name']} </div>
+            </div> `
     })
 }
-//evento seleccionar opciones de tipo (FILTRO) - resumida 09/07
-document.getElementById('filterList').addEventListener('change', (e) => {
-    document.getElementById('containerPokemon').innerHTML = ` `;
+
+//Este evento selecciona un value de 'filterList', luego invoca la función para MOSTRAR los pokémon cards
+filterList.addEventListener('change', (e) => {
+    sortList.selectedIndex = 0;
+    containerPokemon.innerHTML = ` `;
     selectTypePokemon(e.target.value);
+    openModal();
 });
 
 //interacción del boton ordenar
 const container = document.getElementById("containerPokemon");
 
-document.getElementById("sortList").addEventListener("change", (e) => {
-    container.innerHTML = "";
+document.getElementById("sortList").addEventListener("change", (event) => {
+    container.innerHTML = " ";
+    filterList.selectedIndex = 0;
 
-    if (e.target.value === "A-Z" || e.target.value === "Z-A" ) {
-        const sortArray = sortData(data.pokemon, "name", e.target.value);
+    if (event.target.value === "A-Z" || event.target.value === "Z-A" ) {
+        const sortArray = sortData(data.pokemon, "name", event.target.value); 
+        
         for (let i = 0; i < data.pokemon.length; i++) {
 
         document.getElementById("containerPokemon").innerHTML += `
@@ -58,61 +88,121 @@ document.getElementById("sortList").addEventListener("change", (e) => {
             <span class="tooltip">Click to see information</span>
             <img class="img-card" src="https://www.serebii.net/pokemongo/pokemon/${sortArray[i].num}.png"></img>
             <div class="name-card"> ${sortArray[i].name} </div>
-        </div> `
+            </div> `
         }
     }
 
-    if (e.target.value === "sortNumerically"){
-        const sortArrayNum = sortData(data.pokemon, "num", e.target.value);
+    if (event.target.value === "sortNumerically"){
+        const sortArrayNum = sortData(data.pokemon, "num", event.target.value);
         for(let i=0; i<data.pokemon.length; i++) {
-
-            document.getElementById("containerPokemon").innerHTML += `
+            document.getElementById("containerPokemon").innerHTML += ` 
             <div id="${sortArrayNum[i].num}" class="single-card">
             <h3 class="num-card">Nº ${sortArrayNum[i].num}</h3>
             <span class="tooltip">Click to see information</span>
             <img class="img-card" src="https://www.serebii.net/pokemongo/pokemon/${sortArrayNum[i].num}.png"></img>
             <div class="name-card"> ${sortArrayNum[i].name} </div>
-        </div>
-            `
+            </div> `
         }
     }
+    openModal();
 });
 
-// Probando el modal
-function openModal(idCard){
-    document.getElementById('name-info-pokemon').innerHTML = `N° ${data.pokemon[Number(idCard)-1].num} ${data.pokemon[Number(idCard)-1].name}`;
-    document.getElementById('imagen-info-pokemon').innerHTML = `<img class="imagen-info-pokemon" src="https://www.serebii.net/pokemongo/pokemon/${data.pokemon[Number(idCard)-1].num}.png"></img>`;
-    document.getElementById('height-info-pokemon').innerHTML = `Height: ${data.pokemon[Number(idCard)-1].size['height']}`;
-    document.getElementById('weight-info-pokemon').innerHTML = `Weight: ${data.pokemon[Number(idCard)-1].size['weight']}`;
-    document.getElementById('egg-info-pokemon').innerHTML = `Egg: ${data.pokemon[Number(idCard)-1].egg}`;
-    document.getElementById('encounter-info-pokemon').innerHTML = `Encounter rate: ${data.pokemon[Number(idCard)-1].encounter['base-capture-rate']}`;
-    document.getElementById('about-info-pokemon').innerHTML = `Description: ${data.pokemon[Number(idCard)-1].about}`;
-  document.getElementById(idCard).addEventListener('click', ()=>{
-    document.getElementById('modal').style.display = 'block';
-  })
-  document.getElementById('close').addEventListener('click', ()=>{
+// Esta función escribe en los elementos del doc la información del pokemon seleccionado - MODAL
+  function createModal (idCard){
+      const infoCard=data.pokemon.find(pokeNum=>pokeNum.num == idCard);
+       document.querySelector("#container-info-pokemon").innerHTML = `
+            <div id="header-info-pokemon">
+            <h3 id="name-info-pokemon">N° ${infoCard.num} ${infoCard.name}</h3>
+            <h3 id="close">x</h3>
+            </div>
+            <div id="small-info-pokemon">
+            <div id="imagen-info-pokemon">
+                <img class="imagen-info-pokemon" src="https://www.serebii.net/pokemongo/pokemon/${infoCard.num}.png">
+            </div>
+            <div id="first-info-pokemon">
+                <p id="height-info-pokemon">Height: ${infoCard.size.height}</p>
+                <p id="weight-info-pokemon">Weight: ${infoCard.size.weight}</p>
+                <p id="egg-info-pokemon">Egg: ${infoCard.egg} </p>
+                <p id="encounter-info-pokemon">Encounter rate: ${infoCard.encounter['base-capture-rate']}</p>
+            </div>
+            </div>
+            <article id="about-info-pokemon">Description: ${infoCard.about} </article>
+       `
+       document.getElementById('modal').style.display = 'block';
+       document.getElementById('close').addEventListener('click', ()=>{
     document.getElementById('modal').style.display = 'none';
-  })
+  });
 }
 
-function openInfo(){
-  document.getElementById("containerPokemon").addEventListener('click', (e)=>{
-    const replay = (index) =>{ 
-      data.pokemon.find(buscando =>{ 
-        buscando.img == index ? openModal(buscando.num) : null
-      }) 
-    };
-    replay(e.target.getAttribute('src'));
-  })
-}
-openInfo();
-
-/* const pesoPesado = (obj) => {
-    let sizePokemon = [];
-    obj.map((array)=> {
-        sizePokemon = array['size']['weight'];
-        return console.log(sizePokemon);
+//Esta función permite abrir el modal con la información
+const openModal = () => {
+    document.querySelectorAll(".single-card").forEach(card => card.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        createModal(e.currentTarget.id)
     })
+    );
+}
+openModal(); //Se invoca varias veces
 
-};
-pesoPesado(data.pokemon) */
+//Botón para limpiar búsqueda y filtros
+document.querySelector('.reset-search').addEventListener('click', ()=> {
+    containerPokemon.innerHTML = ` `;
+    document.getElementById('search').value = ``;
+    filterList.selectedIndex = 0;
+    sortList.selectedIndex = 0;
+    loadedData(originalData);
+    openModal();
+});
+
+//Botón para cargar el top 10 pokémon con mayor altura
+const callCompute = () => {
+    document.querySelector('.video-youtube').removeAttribute('src');
+    document.getElementById('newContainer').style.visibility = 'hidden';
+    document.getElementById('searchAreaContainer').style.display = 'none';
+/*     filterList.selectedIndex = 0;
+    sortList.selectedIndex = 0; */
+    containerPokemon.innerHTML = ` `;
+    containerPokemon.innerHTML = `<h3 style='width: 100%; text-align: center; margin: 20px 0;'>Cool! Buddy, here you have the 10 highest pokemon in the region Kanto and Johto Regions! 📏</h3>`;
+    return greaterHeight(originalData, 10).map((elemento)=>{
+        containerPokemon.innerHTML += `
+            <div id=${elemento['num']} class="single-card">
+                <h3 class="num-card">Nº ${elemento['num']}</h3>
+                <span class="tooltip">Click to see information</span>
+                <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${elemento['num']}.png"></img>
+                <div class="name-card"> ${elemento['name']} </div>
+            </div> `
+    openModal();
+    });
+}
+document.getElementById('topTenHeight').addEventListener('click', callCompute)
+
+// Top 10 pokemones más pesados
+const computeState= () =>{
+    containerPokemon.innerHTML = "";
+    document.getElementById("searchAreaContainer").style.display="none";
+    containerPokemon.innerHTML= ` <h3 style='width: 100%; text-align: center; margin: 20px 0;'>Cool! Buddy, here you have the 10 heaviest pokemon in the region Kanto and Johto Regions! 📏</h3>`;
+    return greaterWeight([...data.pokemon], 10).map(pokemonPesado=>{
+    containerPokemon.innerHTML += `
+                <div id=${pokemonPesado['num']} class="single-card">
+                <h3 class="num-card">Nº ${pokemonPesado['num']}</h3>
+                <span class="tooltip">Click to see information</span>
+                <img class="img-card" id="img-card" src="https://www.serebii.net/pokemongo/pokemon/${pokemonPesado['num']}.png"></img>
+                <div class="name-card"> ${pokemonPesado['name']} </div>
+            </div>
+    `
+    openModal();
+});
+}
+ document.getElementById('topTenWeight').addEventListener('click', computeState);
+
+
+
+
+
+//mostrando sección de How to be a pokemon master
+document.getElementById('howToBePokemonMaster').addEventListener('click', ()=>{
+    document.querySelector('.video-youtube').setAttribute('src', 'https://www.youtube.com/embed/Jgh3ZgX6-vQ');
+    document.getElementById('searchAreaContainer').style.display = 'none';
+    containerPokemon.innerHTML = ` `;
+    document.getElementById('newContainer').style.visibility = 'visible';
+});
