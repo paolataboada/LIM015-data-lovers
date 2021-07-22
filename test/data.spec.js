@@ -1,16 +1,5 @@
-import { /* example, */ filterData, sortData, compute } from '../src/data.js';
+import { filterData, sortData, greaterHeight, greaterWeight } from '../src/data.js';
 
-
-/* describe('example', () => {
-  it('is a function', () => {
-    expect(typeof example).toBe('function');
-  });
-
-  it('returns `example`', () => {
-    expect(example()).toBe('example');
-  });
-});
- */
 describe('filterData', () => {
   it('is a function', () => {
     expect(typeof filterData).toBe('function');
@@ -44,10 +33,6 @@ describe('filterData', () => {
   it('should return an object with information about pokemon `water` type', () => {
     expect(filterData(allPokemon, 'water')).toEqual(waterType);
   })
-
-/*   it('returns `data`', () => {
-    expect(anotherExample()).toBe('OMG');
-  }); */
 });
 
 describe('sortData', () => {
@@ -124,9 +109,9 @@ describe('sortData', () => {
 
 });
 
-describe('compute', () => {
+describe('greaterHeight', () => {
   it('is a function', () => {
-    expect(typeof compute).toBe('function');
+    expect(typeof greaterHeight).toBe('function');
   });
 
   const pokemonWithSizes = [
@@ -160,15 +145,44 @@ describe('compute', () => {
   ]
 
   it('should return an object with 3 elements', () => {
-    expect(compute(pokemonWithSizes, 3)).toHaveLength(3);
+    expect(greaterHeight(pokemonWithSizes, 3)).toHaveLength(3);
   })
 
   it('should return an object with the first greater height value', () => {
-    expect(compute(pokemonWithSizes, 1)).toEqual(firstGreaterHeight);
+    expect(greaterHeight(pokemonWithSizes, 1)).toEqual(firstGreaterHeight);
   })
 
   it('should return an object sort by `size:heigth`', () => {
-    expect(compute(pokemonWithSizes, 10)).toEqual(OrdererSizesByHeigth);
+    expect(greaterHeight(pokemonWithSizes, 10)).toEqual(OrdererSizesByHeigth);
   })
+
+});
+
+describe ('greaterWeight',()=>{
+
+ const arrayPokemones= [
+  {"num": "245", "name": "suicune", "size": {"height": "2.01 m", "weight": "187.0 kg"}},
+  {"num": "246",  "name": "larvitar", "size": {"height": "0.60 m", "weight": "72.0 kg"}},
+  {"num": "247", "name": "pupitar", "size": {"height": "1.20 m", "weight": "152.0 kg"}},
+  {"num": "248", "name": "tyranitar", "size": {"height": "2.00 m", "weight": "202.0 kg"}},
+  {"num": "249", "name": "lugia", "size": {"height": "5.21 m", "weight": "216.0 kg"}},
+ ];
+
+ const pokemonesPesados =[
+  {"num": "249", "name": "lugia", "size": {"height": "5.21 m", "weight": "216.0 kg"}},
+  {"num": "248", "name": "tyranitar", "size": {"height": "2.00 m", "weight": "202.0 kg"}},
+  {"num": "245", "name": "suicune", "size": {"height": "2.01 m", "weight": "187.0 kg"}},
+  {"num": "247", "name": "pupitar", "size": {"height": "1.20 m", "weight": "152.0 kg"}},
+  {"num": "246",  "name": "larvitar", "size": {"height": "0.60 m", "weight": "72.0 kg"}},
+ ];
+
+
+  it('is a function', ()=>{
+    expect(typeof greaterWeight).toBe('function');
+  });
+
+  it('should return an array list with pokemons in order by weight ', () =>{
+    expect(greaterWeight(arrayPokemones, 6)).toEqual(pokemonesPesados);
+  });
 
 });

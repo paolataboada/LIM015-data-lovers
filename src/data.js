@@ -28,11 +28,25 @@ export const sortData = (data, sortBy, sortOrder) => {
     return  arrayOrdenado;
     };
 
-//función para calcular los n=10 pokemones más altos (altura x m.)
-export const compute = (dato, n) => {
-  dato.sort((a,b) => {
-    if(a.size.height > b.size.height) return -1
+//Función para calcular los n=10 pokemon más altos (altura en m.)
+export const greaterHeight = (data, n) => {
+  let resultData = [...data].sort((a,b) => {
+    let aHeight = a.size.height;
+    let bHeight = b.size.height;
+    if( Number(aHeight.split(" ")[0]) > Number(bHeight.split(" ")[0]) ) return -1
     return 1
   });
-  return dato.slice(0,n);
+  return resultData.slice(0,n);
+};
+
+
+//Función para calcular los n=10 pokemon más pesados (peso en kg.)
+export const greaterWeight = (data, n) => {
+  let resultData2 = [...data].sort((a,b) => {
+    let aWeight = a.size.weight;
+    let bWeight = b.size.weight;
+    if( Number(aWeight.split(" ")[0]) > Number(bWeight.split(" ")[0]) ) return -1
+    return 1
+  });
+  return resultData2.slice(0,n);
 };
