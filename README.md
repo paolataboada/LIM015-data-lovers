@@ -1,4 +1,4 @@
-# Data Lovers
+# Data Lovers - Proyecto Pokémon
 
 ## Índice
 
@@ -138,6 +138,12 @@ donde contará con la herramienta de filtrado por tipos y podrá ordenarlos de a
 #### Prototipo de baja fidelidad
 
 Realizamos un boceto inicial para aterrizar la idea del proyecto: 
+
+![image](https://user-images.githubusercontent.com/85120257/126593538-70b50dc7-3d5b-4224-af3c-c476edb3ea66.png)
+
+![image](https://user-images.githubusercontent.com/85120257/126593547-3d178524-77f1-4efc-bbf0-e40e4346014a.png)
+
+![image](https://user-images.githubusercontent.com/85120257/126593556-7c5949be-94de-44b2-812a-116a6681443a.png)
 
 #### Prototipo de alta fidelidad y testeos de usabilidad
 
